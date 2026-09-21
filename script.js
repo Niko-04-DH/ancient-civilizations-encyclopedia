@@ -2,7 +2,6 @@
    CHRONOS ARCHIVE // Progressive Archival Engine & Database
    ========================================================= */
 
-// 1. Unified Archival Database Model
 const ARCHIVE_DATABASE = {
   civilizations: [
     {
@@ -16,7 +15,7 @@ const ARCHIVE_DATABASE = {
       tabs: {
         "Overview": `
           <h4 class="reader-heading">Civilizational Foundations</h4>
-          <p>Ancient Egypt developed along the fertile banks of the Nile River, depending upon annual inundation (akhet) to cultivate surplus grain that sustained a complex central administrative state. The civilization endured for over three millennia across the Early Dynastic, Old Kingdom, Middle Kingdom, and New Kingdom periods.</p>
+          <p>Ancient Egypt developed along the fertile banks of the Nile River, depending upon annual inundation to cultivate surplus grain that sustained a complex central administrative state. The civilization endured for over three millennia across the Early Dynastic, Old Kingdom, Middle Kingdom, and New Kingdom periods.</p>
           <div class="reader-callout">
             <strong>HISTORICAL SIGNIFICANCE:</strong> Beyond monumental funerary architecture, Egyptian society established formalized legal codes, medical papyri, surveying geometry, and a 365-day solar calendar that directly influenced the Julian calendar.
           </div>
@@ -24,15 +23,15 @@ const ARCHIVE_DATABASE = {
         "Architecture & Engineering": `
           <h4 class="reader-heading">Megalithic Construction & Quarrying</h4>
           <p>The construction of the Great Pyramid of Giza incorporates approximately 2.3 million limestone and granite blocks, ranging from 2.5 to over 50 metric tons. Megalithic rose granite used in the King's Chamber ceiling beams was quarried at Aswan and transported over 800 kilometers downriver via Nile flood barges.</p>
-          <p>Documented physical tools include dolerite pounders, copper and bronze chisels, wooden wedges with water-expansion splitting, and quartz-sand slurry saws. However, high-feed rate cylindrical core drill marks found in hard basalt at Abusir and diorite vessels from the Early Dynastic period remain active subjects of engineering study regarding abrasive cutting efficiency.</p>
+          <p>Documented physical tools include dolerite pounders, copper and bronze chisels, wooden wedges with water-expansion splitting, and quartz-sand slurry saws. However, high-feed rate cylindrical core drill marks found in hard basalt at Abusir and diorite vessels from the Early Dynastic period remain active subjects of engineering study.</p>
           <div class="reader-callout">
             <strong>VERIFIED GEODETIC SURVEY:</strong> The Great Pyramid is aligned to True North within 3/60ths of a single degree (less than 4 minutes of arc), demonstrating mastery of stellar transit observation prior to the magnetic compass.
           </div>
         `,
         "Astronomy & Acoustics": `
           <h4 class="reader-heading">Resonance & Celestial Navigation</h4>
-          <p>Astronomical orientation was conducted using the 'indak' plumb-line and 'merjet' sighting tool, observing circumpolar stars ('the imperishable stars') like Thuban (Alpha Draconis), which served as the Pole Star in the 3rd millennium BCE.</p>
-          <p>Acoustic measurements conducted within the King's Chamber identify a prominent Helmholtz resonance frequency near 117–121 Hz. While physical acoustic reinforcement is documented, hypotheses proposing these chambers acted as infrasonic psycho-acoustic transformers or acoustic levitation devices remain speculative without contemporary written papyrological confirmation.</p>
+          <p>Astronomical orientation was conducted using plumb-line sighting tools, observing circumpolar stars like Thuban (Alpha Draconis), which served as the Pole Star in the 3rd millennium BCE.</p>
+          <p>Acoustic measurements conducted within the King's Chamber identify a prominent resonance frequency near 117–121 Hz. While physical acoustic reinforcement is documented, hypotheses proposing these chambers acted as infrasonic psycho-acoustic transformers or acoustic levitation devices remain speculative without contemporary written papyrological confirmation.</p>
         `,
         "Primary Sources": `
           <h4 class="reader-heading">Surviving Papyri & Field Documentation</h4>
@@ -58,7 +57,7 @@ const ARCHIVE_DATABASE = {
           <h4 class="reader-heading">The Pre-Pottery Neolithic Paradigm Shift</h4>
           <p>Excavated under the direction of archaeologist Klaus Schmidt (German Archaeological Institute), Göbekli Tepe overturned the orthodox sequence that settled agriculture must precede monumental architecture. Hunter-gatherer bands congregated to erect multi-ton circular megalithic enclosures centuries before wheat domestication or ceramic pottery appeared.</p>
           <div class="reader-callout">
-            <strong>CHRONOLOGICAL PLACEMENT:</strong> Radiocarbon dating of pedogenic carbonate layers firmly anchors the oldest megalithic strata (Layer III) to approximately 9600 BCE—coinciding directly with the termination of the Younger Dryas cold period.
+            <strong>CHRONOLOGICAL PLACEMENT:</strong> Radiocarbon dating of pedogenic carbonate layers firmly anchors the oldest megalithic strata to approximately 9600 BCE—coinciding directly with the termination of the Younger Dryas cold period.
           </div>
         `,
         "Megalithic Construction": `
@@ -68,13 +67,12 @@ const ARCHIVE_DATABASE = {
         `,
         "The Intentional Burial": `
           <h4 class="reader-heading">Deliberate Deposition & Preservation</h4>
-          <p>Layer III was not collapsed by natural seismic decay; rather, it was systematically and deliberately backfilled with hundreds of cubic meters of limestone debris, animal bones (predominantly wild gazelle), and flint tools around 8000 BCE. This intentional entombment protected the carvings from Holocene erosion for ten millennia.</p>
+          <p>The site was systematically and deliberately backfilled with hundreds of cubic meters of limestone debris, animal bones, and flint tools around 8000 BCE. This intentional entombment protected the carvings from Holocene erosion for ten millennia.</p>
         `,
         "Sources & References": `
           <ul class="reader-sources-list">
             <li>Schmidt, K. (2006). <em>Sie bauten die ersten Tempel: Das rätselhafte Heiligtum der Steinzeitjäger</em>. Verlag C.H. Beck.</li>
             <li>Dietrich, O., et al. (2012). "The role of cult and feasting in the emergence of Neolithic communities." <em>Antiquity</em>, 86(333).</li>
-            <li>German Archaeological Institute (DAI) Field Reports, Şanlıurfa Project (2000–2024).</li>
           </ul>
         `
       },
@@ -91,22 +89,22 @@ const ARCHIVE_DATABASE = {
       tabs: {
         "Overview": `
           <h4 class="reader-heading">The First Standardized Urban Civilization</h4>
-          <p>Spanning over 1 million square kilometers across modern Pakistan and northwestern India, the Harappan civilization flourished around the Indus and Ghaggar-Hakra river systems. Cities like Mohenjo-daro, Harappa, Dholavira, and Rakhigarhi accommodated populations up to 40,000 people without identifiable monumental palaces or monarchical royal burials.</p>
+          <p>Spanning over 1 million square kilometers across modern Pakistan and northwestern India, the Harappan civilization flourished around the Indus and Ghaggar-Hakra river systems. Cities like Mohenjo-daro, Harappa, Dholavira, and Rakhigarhi accommodated populations up to 40,000 people without identifiable monarchical palaces.</p>
         `,
         "Hydraulics & Grid Urbanism": `
           <h4 class="reader-heading">Municipal Drainage & Kiln Engineering</h4>
-          <p>Harappan cities were planned on orthogonal grid layouts aligned cardinal directions. Residential units featured private bathrooms connected directly via terracotta pipes into covered municipal brick drainage networks running below street levels—a level of public hygiene unprecedented in Bronze Age Mesopotamia or Egypt.</p>
+          <p>Harappan cities were planned on orthogonal grid layouts aligned cardinal directions. Residential units featured private bathrooms connected directly via terracotta pipes into covered municipal brick drainage networks running below street levels.</p>
           <div class="reader-callout">
             <strong>STANDARDIZED METROLOGY:</strong> Baked bricks across all sites strictly conformed to the 4:2:1 dimensional proportion (Length : Breadth : Thickness), ensuring maximum structural tensile strength in bonding.
           </div>
         `,
         "Maritime Engineering": `
           <h4 class="reader-heading">The Lothal Tidal Basin</h4>
-          <p>At Lothal in Gujarat, Harappan engineers constructed a massive trapezoidal burnt-brick basin (214 × 36 meters) identified as the world's earliest engineered tidal dock. Connected via a canal to the Sabarmati River, it incorporated inlet sluice gates and spillway channels to lock ships at high tide while flushing silt deposits.</p>
+          <p>At Lothal in Gujarat, Harappan engineers constructed a massive trapezoidal burnt-brick basin (214 × 36 meters) identified as an engineered tidal dock, navigating siltation via sluice gates.</p>
         `,
         "Decipherment Status": `
           <div class="reader-callout">
-            <strong>UNDECIPHERED INSCRIPTIONS:</strong> Over 4,000 steatite stamp seals featuring the Indus script exist, but lack a bilingual inscription (like the Rosetta Stone). The script remains officially undeciphered despite computational and linguistic attempts.
+            <strong>UNDECIPHERED INSCRIPTIONS:</strong> Over 4,000 steatite stamp seals featuring the Indus script exist, but lack a bilingual inscription (like the Rosetta Stone). The script remains officially undeciphered.
           </div>
         `
       },
@@ -119,17 +117,17 @@ const ARCHIVE_DATABASE = {
       region: "Southeast Asia (Cambodia)",
       evidence: "documented",
       img: "https://images.unsplash.com/photo-1569154941061-e231b4725ef1?auto=format&fit=crop&w=1200&q=80",
-      summary: "LIDAR airborne surveys revealed vast concentric hydraulic grids, axial solar alignments, and circuit-like water regulation basins.", and circuit-like water regulation basins.",
+      summary: "LIDAR airborne surveys revealed vast concentric hydraulic grids, axial solar alignments, and circuit-like water regulation basins.",
       tabs: {
         "Overview": `
           <h4 class="reader-heading">The Hydraulic Megacity</h4>
-          <p>Centering around Angkor Wat and Angkor Thom, the Khmer Empire engineered an urban network that sustained nearly 750,000 inhabitants. Airborne LIDAR surveys led by the Khmer Archaeology LiDAR Consortium (KALC) demonstrated that Angkor was not an isolated temple complex, but a vast low-density hydraulic megacity.</p>
+          <p>Centering around Angkor Wat and Angkor Thom, the Khmer Empire engineered an urban network that sustained nearly 750,000 inhabitants. Airborne LIDAR surveys demonstrated that Angkor was a vast low-density hydraulic megacity.</p>
         `,
         "Geometric & Water Engineering": `
           <h4 class="reader-heading">Reservoirs & Axial Symmetry</h4>
           <p>Two monumental artificial reservoirs—the West Baray (8 km × 2.1 km) and East Baray—stored over 100 million cubic meters of monsoon runoff to control seasonal flooding, feed three rice harvests annually, and stabilize temple foundations through water-table hydrostatic pressure.</p>
           <div class="reader-callout">
-            <strong>CIRCUIT-LIKE CONCENTRIC PLANNING:</strong> Visual similarities to integrated microchip boards result from fractal Hindu-Buddhist cosmology (Mount Meru) executed with strict geometric symmetry, axial moats, and hydraulic flow-routing.
+            <strong>CIRCUIT-LIKE CONCENTRIC PLANNING:</strong> Visual similarities to integrated circuits result from fractal Hindu-Buddhist cosmology executed with strict geometric symmetry, axial moats, and hydraulic flow-routing.
           </div>
         `,
         "Solar Alignments": `
@@ -144,40 +142,30 @@ const ARCHIVE_DATABASE = {
   knowledge: [
     {
       id: "geometry",
-      title: "Sacred Geometry, π (Pi) & φ (Phi)",
+      title: "Sacred Geometry, Pi & Phi",
       icon: "📐",
       evidence: "debated",
       summary: "Mathematical analysis of spherical coordinates, circle squaring, and golden ratio proportions across Giza, Babylon, and Greece.",
       tabs: {
         "What is Sacred Geometry?": `
           <h4 class="reader-heading">Historical Geometric Proportioning</h4>
-          <p>In modern usage, 'Sacred Geometry' refers to geometric patterns and mathematical constants found in religious and monumental architecture. Historically, ancient builders did not view geometry as mystical abstraction, but as practical spatial truth (geometria: 'earth measurement').</p>
-          <p>Basic geometric constructions using string pegs and right-angle triangles (such as the 3:4:5 rope knot method documented in Egypt and India's <em>Sulba Sutras</em>) allowed large structures to be laid out without digital trigonometry.</p>
+          <p>Ancient builders viewed geometry as practical spatial truth (geometria: 'earth measurement'). Basic constructions using string pegs and right-angle triangles allowed large structures to be laid out without digital tools.</p>
         `,
-        "The Constant π (Pi)": `
+        "The Constant Pi": `
           <h4 class="reader-heading">Documentation of Circular Ratios</h4>
-          <p><strong>What is π?</strong> The ratio of a circle's circumference to its diameter ($C/d$).</p>
-          <p><strong>Rhind Papyrus (Egypt, c. 1550 BCE):</strong> Problem 50 gives an approximation of $\pi \approx (16/9)^2 \approx 3.1605$.</p>
-          <p><strong>Babylonian Tablets (Susa, c. 1900 BCE):</strong> Used $3 + 1/8 = 3.125$.</p>
-          <p><strong>Archimedes of Syracuse (c. 250 BCE):</strong> First rigorous mathematical proof bounding $\pi$ between $223/71 < \pi < 22/7$ ($3.1408 < \pi < 3.1428$) using 96-sided inscribed and circumscribed polygons.</p>
+          <p><strong>Rhind Papyrus (Egypt, c. 1550 BCE):</strong> Problem 50 gives an approximation of Pi approximately equal to 3.1605.</p>
+          <p><strong>Babylonian Tablets (Susa, c. 1900 BCE):</strong> Used 3.125.</p>
+          <p><strong>Archimedes of Syracuse (c. 250 BCE):</strong> First rigorous mathematical proof bounding Pi between 3.1408 and 3.1428 using 96-sided polygons.</p>
           <div class="reader-callout">
-            <strong>THE GIZA DEBATE:</strong> The perimeter of the Great Pyramid divided by twice its height yields approximately $3.1415$. Mainstream scholarship debates whether this was a deliberate encoding of $\pi$ or the natural consequence of using a rolling drum wheel radius to measure base lengths.
+            <strong>THE GIZA DEBATE:</strong> The perimeter of the Great Pyramid divided by twice its height yields approximately 3.1415. Scholarship debates whether this was deliberate or the result of using a rolling drum wheel to measure base lengths.
           </div>
         `,
-        "The Constant φ (Golden Ratio)": `
+        "The Constant Phi (Golden Ratio)": `
           <h4 class="reader-heading">Golden Section: Facts vs Retrospective Fitting</h4>
-          <p><strong>Mathematical Definition:</strong> Two quantities $a$ and $b$ are in the golden ratio ($\phi \approx 1.618033...$) when $(a+b)/a = a/b$.</p>
-          <p><strong>Documented History:</strong> First rigorously defined by Euclid of Alexandria in <em>Elements</em> (Book VI, Definition 3) as 'extreme and mean ratio'.</p>
+          <p>First rigorously defined by Euclid of Alexandria in <em>Elements</em> as 'extreme and mean ratio'.</p>
           <div class="reader-callout">
-            <strong>CRITICAL ARCHAEOLOGICAL DISTINCTION:</strong> While enthusiasts frequently overlay the Golden Spiral on the Parthenon, Great Pyramid, or Taj Mahal, measurements often fail when taking precise laser coordinates. In many cases, proportions align just as closely with integer ratios (like 4:9 in the Parthenon).
+            <strong>CRITICAL ARCHAEOLOGICAL DISTINCTION:</strong> While enthusiasts frequently overlay the Golden Spiral on the Parthenon or Great Pyramid, laser measurements often show proportions align just as closely with integer ratios (like 4:9 in the Parthenon).
           </div>
-        `,
-        "Sources & References": `
-          <ul class="reader-sources-list">
-            <li>Euclid, <em>Elements</em> (Heath translation, 1956). Dover Publications.</li>
-            <li>Robins, G., & Shute, C. (1987). <em>The Rhind Mathematical Papyrus: An Ancient Egyptian Text</em>. British Museum Publications.</li>
-            <li>Livio, M. (2002). <em>The Golden Ratio: The Story of Phi</em>. Broadway Books.</li>
-          </ul>
         `
       },
       related: ["egypt", "angkor", "antikythera", "alignment"]
@@ -191,19 +179,15 @@ const ARCHIVE_DATABASE = {
       tabs: {
         "Acoustic Resonance": `
           <h4 class="reader-heading">Physics of Stone Resonators</h4>
-          <p>When an enclosed architectural space has dimensions that are multiples of specific sound wavelengths, sound waves reflect between parallel stone walls to produce <strong>standing waves</strong> and resonant amplification (Helmholtz resonance).</p>
+          <p>When an enclosed architectural space has dimensions that are multiples of specific sound wavelengths, sound waves reflect between parallel stone walls to produce standing waves and resonant amplification (Helmholtz resonance).</p>
         `,
         "The 110–120 Hz Phenomenon": `
-          <h4 class="reader-heading">Measurements at Ħal Saflieni & Giza</h4>
-          <p>Studies conducted by acoustic researchers at the underground megalithic Ħal Saflieni Hypogeum in Malta and cairn chambers in the UK (such as Wayland's Smithy) detected pronounced resonant frequency peaks between 110 Hz and 122 Hz.</p>
-          <p>Neuro-acoustic testing (Cook et al., 2008) indicated that frequencies in the 110 Hz range can shift brain activity in the prefrontal cortex toward alpha/theta patterns, altering emotional processing during vocal chanting.</p>
+          <h4 class="reader-heading">Measurements at Hal Saflieni & Giza</h4>
+          <p>Studies conducted by acoustic researchers at the underground megalithic Hal Saflieni Hypogeum in Malta and cairn chambers in the UK detected pronounced resonant frequency peaks between 110 Hz and 122 Hz.</p>
+          <p>Neuro-acoustic testing indicated that frequencies in the 110 Hz range can shift brain activity in the prefrontal cortex toward alpha/theta patterns.</p>
           <div class="reader-callout">
-            <strong>EVIDENCE BOUNDARY:</strong> The acoustic resonance of stone chambers is a physical, measurable reality. However, assertions that ancients used acoustics for antigravity stone levitation or interplanetary communication lack physical mechanism or textual documentation and remain speculative.
+            <strong>EVIDENCE BOUNDARY:</strong> The acoustic resonance of stone chambers is a physical, measurable reality. However, assertions that ancients used acoustics for antigravity stone levitation lack physical evidence.
           </div>
-        `,
-        "Greek Epidaurus Theatre": `
-          <h4 class="reader-heading">Empirical Acoustic Filtering</h4>
-          <p>Constructed in the 4th century BCE by Polykleitos the Younger, the Epidaurus theatre can transmit an actor's whisper to 14,000 spectators across 55 rows. Georgia Tech researchers demonstrated that the fluted limestone seating acts as an acoustic acoustic-filter: suppressing low-frequency crowd murmur (<500 Hz) while amplifying high-frequency vocal consonants.</p>
         `
       },
       related: ["egypt", "geometry", "younger-dryas"]
@@ -217,12 +201,12 @@ const ARCHIVE_DATABASE = {
       tabs: {
         "True North Precision": `
           <h4 class="reader-heading">The Giza & Mesoamerican Baseline</h4>
-          <p>True North (geodetic north) differs from Magnetic North, which wanders over centuries. The Great Pyramid is oriented to geodetic north within 0.067 degrees. At Teotihuacan in Mexico, the Street of the Dead is oriented 15.5 degrees east of north, matching the Pleiades setting horizon.</p>
+          <p>True North differs from Magnetic North. The Great Pyramid is oriented to geodetic north within 0.067 degrees. At Teotihuacan in Mexico, the Street of the Dead is oriented 15.5 degrees east of north, matching the Pleiades setting horizon.</p>
         `,
         "Surveying Techniques": `
           <h4 class="reader-heading">How Ancients Determined Alignment</h4>
-          <p><strong>1. The Indian Circle (Shadow Method):</strong> Erecting a vertical gnomon staff inside a circle and marking where morning and afternoon shadows cross the circumference. The line connecting the intersections forms an exact East-West axis.</p>
-          <p><strong>2. Simultaneous Stellar Transit:</strong> Kate Spence (Cambridge University) proposed Egyptian astronomers observed pairs of opposing circumpolar stars (like Kochab and Mizar) through a plumb-line; when both aligned vertically, the plumb-line pointed directly to True North.</p>
+          <p><strong>1. Shadow Gnomon Method:</strong> Erecting a vertical staff inside a circle and marking morning and afternoon shadows.</p>
+          <p><strong>2. Simultaneous Stellar Transit:</strong> Observing pairs of opposing circumpolar stars through a plumb-line.</p>
         `
       },
       related: ["egypt", "angkor", "geometry"]
@@ -236,19 +220,14 @@ const ARCHIVE_DATABASE = {
       tabs: {
         "Paleoclimate Evidence": `
           <h4 class="reader-heading">The Younger Dryas Boundary (YDB)</h4>
-          <p>The Younger Dryas (c. 12,800 to 11,650 calibrated years ago) was a period of abrupt, severe cooling that interrupted the deglaciation of the Northern Hemisphere, followed by rapid warming and sudden Meltwater Pulses (MWP-1B).</p>
-          <p>The <strong>Younger Dryas Impact Hypothesis</strong> (Firestone et al., 2007) proposes that fragments of a disintegrating comet exploded over the Laurentide Ice Sheet, triggering wildfires, biomass burning, and catastrophic meltwater flooding into oceans.</p>
+          <p>The Younger Dryas (c. 12,800 to 11,650 calibrated years ago) was a period of abrupt, severe cooling that interrupted the deglaciation of the Northern Hemisphere, followed by rapid warming and sudden Meltwater Pulses.</p>
         `,
         "Mythology vs Geology": `
           <h4 class="reader-heading">Universal Deluge Narratives</h4>
-          <p>Over 200 cultures maintain ancestral flood narratives: <em>The Epic of Gilgamesh</em> (Utnapishtim), Genesis (Noah), Hindu scriptures (Manu & Matsya Avatar), and Mesoamerican traditions (Coxcox).</p>
+          <p>Over 200 cultures maintain ancestral flood narratives: <em>The Epic of Gilgamesh</em>, Genesis, Hindu scriptures (Manu & Matsya Avatar), and Mesoamerican traditions.</p>
           <div class="reader-callout">
-            <strong>SCHOLARLY DISTINCTION:</strong> While shared narratives reflect profound cultural memory of catastrophic post-glacial sea-level rises that submerged continental shelves (such as Sundaland and Doggerland), they do not substantiate a single instantaneous global wave covering Mount Everest.
+            <strong>SCHOLARLY DISTINCTION:</strong> Shared narratives reflect memory of catastrophic post-glacial sea-level rises that submerged continental shelves, but do not substantiate a single instantaneous global wave covering highest mountain peaks.
           </div>
-        `,
-        "Vedic Yuga Cycles": `
-          <h4 class="reader-heading">Cyclical Temporal Frameworks</h4>
-          <p>Classical Indic cosmology defines time as a repeating cycle of four Yugas: Satya, Treta, Dvapara, and Kali (progressing in a 4:3:2:1 ratio). Kali Yuga traditional chronology begins at 3102 BCE, marking an age of fractured attention, moral decay, and fragmented science following civilizational reset.</p>
         `
       },
       related: ["gobekli", "egypt", "acoustics"]
@@ -266,15 +245,14 @@ const ARCHIVE_DATABASE = {
       tabs: {
         "Overview": `
           <h4 class="reader-heading">Discovery & Micro-CT Imaging</h4>
-          <p>Recovered in 1901 by Greek sponge divers from a shipwreck at a depth of 45 meters, the device consists of 30 surviving bronze gear wheels housed within a wooden frame. Advanced 3D X-ray micro-computed tomography by the Antikythera Mechanism Research Project (AMRP) reconstructed the entire gear train.</p>
+          <p>Recovered in 1901 by Greek sponge divers from a shipwreck at a depth of 45 meters, the device consists of 30 surviving bronze gear wheels housed within a wooden frame.</p>
         `,
         "Mechanical Operation": `
           <h4 class="reader-heading">Calculating Epicyclic Anomalies</h4>
-          <p>The device computed:</p>
           <ul class="reader-sources-list">
             <li><strong>Metonic Cycle:</strong> 235 lunar months tracked across a 19-year calendar.</li>
-            <li><strong>Saros Cycle:</strong> 223-month eclipse prediction spiral, including glyphs predicting eclipse hour and solar color.</li>
-            <li><strong>Variable Lunar Speed:</strong> Replicated Hipparchus's lunar anomaly theory using a pin-and-slot eccentric gear mechanism to model Keplerian elliptical speed variations.</li>
+            <li><strong>Saros Cycle:</strong> 223-month eclipse prediction spiral.</li>
+            <li><strong>Variable Lunar Speed:</strong> Replicated Hipparchus's lunar anomaly theory using an eccentric pin-and-slot gear mechanism.</li>
           </ul>
         `
       },
@@ -291,11 +269,11 @@ const ARCHIVE_DATABASE = {
       tabs: {
         "The Phenomenon": `
           <h4 class="reader-heading">Hardness & Tooling Contradictions</h4>
-          <p>Petrie (1883) noted that diorite and granite drill cores from Giza and Abusir exhibit continuous spiral striations with a feed pitch of up to 2.5 mm per revolution. Given that diorite rates 7 on Mohs scale and pure copper is only 3, simple copper hand drilling requires abrasive quartz or corundum slurry.</p>
+          <p>Diorite and granite drill cores from Giza and Abusir exhibit continuous spiral striations with a feed pitch of up to 2.5 mm per revolution. Given that diorite rates 7 on Mohs scale and pure copper is only 3, simple copper drilling requires abrasive quartz or corundum slurry.</p>
         `,
         "Experimental Archaeology": `
           <h4 class="reader-heading">Stocks & Modern Replications</h4>
-          <p>Denys Stocks demonstrated that copper tube drills with fine quartz sand slurry can cut granite, but achieved penetration rates of only a few millimeters per hour. The high uniform pressure and rapid feed marks on specific museum cores remain an open engineering inquiry.</p>
+          <p>Denys Stocks demonstrated that copper tube drills with fine quartz sand slurry can cut granite, but achieved penetration rates of only a few millimeters per hour. The high uniform pressure on specific museum cores remains an open engineering inquiry.</p>
         `
       },
       related: ["egypt", "geometry", "younger-dryas"]
@@ -308,7 +286,7 @@ const ARCHIVE_DATABASE = {
       tabs: {
         "Documented Levers vs Unexplained Limits": `
           <h4 class="reader-heading">Mechanical Advantage & Friction</h4>
-          <p>Roman and Egyptian records document capstans, pulleys, and sledge lubrication (the tomb of Djehutihotep depicts 172 men pulling a 58-ton statue on wooden sledges with water poured on clay).</p>
+          <p>Roman and Egyptian records document capstans, pulleys, and sledge lubrication.</p>
           <p>However, the 800-ton Trilithon blocks at Baalbek in Lebanon were elevated into a terrace wall 7 meters above ground, posing extreme challenges to ancient timber tensile strength under concentrated load points.</p>
         `
       },
@@ -560,6 +538,7 @@ function switchReaderTab(categoryKey, itemId, tabName, btnEl) {
 
 function closeArchiveReader() {
   const modal = document.getElementById('archiveReaderModal');
+  if (!modal) return;
   modal.classList.remove('active');
   modal.setAttribute('aria-hidden', 'true');
   document.body.style.overflow = 'auto';
@@ -586,6 +565,7 @@ function initSearch() {
   const modal = document.getElementById('searchModal');
   const input = document.getElementById('archiveSearchInput');
   const results = document.getElementById('searchResults');
+  if (!openBtn || !modal || !input) return;
 
   openBtn.addEventListener('click', openSearchModal);
 
@@ -636,13 +616,18 @@ function initSearch() {
 
 function openSearchModal() {
   const modal = document.getElementById('searchModal');
+  if (!modal) return;
   modal.classList.add('active');
   modal.setAttribute('aria-hidden', 'false');
-  setTimeout(() => document.getElementById('archiveSearchInput').focus(), 50);
+  setTimeout(() => {
+    const input = document.getElementById('archiveSearchInput');
+    if (input) input.focus();
+  }, 50);
 }
 
 function closeSearchModal() {
   const modal = document.getElementById('searchModal');
+  if (!modal) return;
   modal.classList.remove('active');
   modal.setAttribute('aria-hidden', 'true');
 }
