@@ -1,158 +1,659 @@
-/* Ambient Canvas Particle Engine */
-const canvas = document.getElementById('particle-canvas');
-const ctx = canvas.getContext('2d');
+/* =========================================================
+   CHRONOS ARCHIVE // Progressive Archival Engine & Database
+   ========================================================= */
 
-let particles = [];
-const particleCount = 45;
-
-function resizeCanvas() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-}
-window.addEventListener('resize', resizeCanvas);
-resizeCanvas();
-
-class Particle {
-  constructor() {
-    this.reset();
-  }
-  reset() {
-    this.x = Math.random() * canvas.width;
-    this.y = Math.random() * canvas.height;
-    this.size = Math.random() * 1.5 + 0.5;
-    this.speedY = Math.random() * 0.4 - 0.2;
-    this.speedX = Math.random() * 0.4 - 0.2;
-    this.opacity = Math.random() * 0.5 + 0.1;
-  }
-  update() {
-    this.x += this.speedX;
-    this.y += this.speedY;
-    if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) {
-      this.reset();
+// 1. Unified Archival Database Model
+const ARCHIVE_DATABASE = {
+  civilizations: [
+    {
+      id: "egypt",
+      name: "Ancient Egypt",
+      period: "c. 3100 – 30 BCE",
+      region: "Nile Valley",
+      evidence: "documented",
+      img: "https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?auto=format&fit=crop&w=800&q=80",
+      summary: "Precision megalithic masonry, geodetic True-North cardinal alignment, and internal granite chambers tuned to resonant frequencies.",
+      tabs: {
+        "Overview": `
+          <h4 class="reader-heading">Civilizational Foundations</h4>
+          <p>Ancient Egypt developed along the fertile banks of the Nile River, depending upon annual inundation (akhet) to cultivate surplus grain that sustained a complex central administrative state. The civilization endured for over three millennia across the Early Dynastic, Old Kingdom, Middle Kingdom, and New Kingdom periods.</p>
+          <div class="reader-callout">
+            <strong>HISTORICAL SIGNIFICANCE:</strong> Beyond monumental funerary architecture, Egyptian society established formalized legal codes, medical papyri, surveying geometry, and a 365-day solar calendar that directly influenced the Julian calendar.
+          </div>
+        `,
+        "Architecture & Engineering": `
+          <h4 class="reader-heading">Megalithic Construction & Quarrying</h4>
+          <p>The construction of the Great Pyramid of Giza incorporates approximately 2.3 million limestone and granite blocks, ranging from 2.5 to over 50 metric tons. Megalithic rose granite used in the King's Chamber ceiling beams was quarried at Aswan and transported over 800 kilometers downriver via Nile flood barges.</p>
+          <p>Documented physical tools include dolerite pounders, copper and bronze chisels, wooden wedges with water-expansion splitting, and quartz-sand slurry saws. However, high-feed rate cylindrical core drill marks found in hard basalt at Abusir and diorite vessels from the Early Dynastic period remain active subjects of engineering study regarding abrasive cutting efficiency.</p>
+          <div class="reader-callout">
+            <strong>VERIFIED GEODETIC SURVEY:</strong> The Great Pyramid is aligned to True North within 3/60ths of a single degree (less than 4 minutes of arc), demonstrating mastery of stellar transit observation prior to the magnetic compass.
+          </div>
+        `,
+        "Astronomy & Acoustics": `
+          <h4 class="reader-heading">Resonance & Celestial Navigation</h4>
+          <p>Astronomical orientation was conducted using the 'indak' plumb-line and 'merjet' sighting tool, observing circumpolar stars ('the imperishable stars') like Thuban (Alpha Draconis), which served as the Pole Star in the 3rd millennium BCE.</p>
+          <p>Acoustic measurements conducted within the King's Chamber identify a prominent Helmholtz resonance frequency near 117–121 Hz. While physical acoustic reinforcement is documented, hypotheses proposing these chambers acted as infrasonic psycho-acoustic transformers or acoustic levitation devices remain speculative without contemporary written papyrological confirmation.</p>
+        `,
+        "Primary Sources": `
+          <h4 class="reader-heading">Surviving Papyri & Field Documentation</h4>
+          <ul class="reader-sources-list">
+            <li><strong>Diary of Merer (c. 2550 BCE):</strong> Papyrus logbook discovered at Wadi al-Jarf describing limestone transport from Tura to Giza under overseer Merer.</li>
+            <li><strong>Rhind Mathematical Papyrus (c. 1550 BCE):</strong> Foundational geometry, fractions, and seked slopes for pyramid inclination.</li>
+            <li><strong>Edwin Smith Papyrus (c. 1600 BCE):</strong> Traumatic surgery, anatomy, and cranial sutures based on empirical diagnosis.</li>
+          </ul>
+        `
+      },
+      related: ["antikythera", "geometry", "acoustics", "alignment"]
+    },
+    {
+      id: "gobekli",
+      name: "Göbekli Tepe Horizon",
+      period: "c. 9600 – 8000 BCE",
+      region: "Upper Mesopotamia (Anatolia)",
+      evidence: "documented",
+      img: "https://images.unsplash.com/photo-1599833975787-5c143f373c30?auto=format&fit=crop&w=800&q=80",
+      summary: "Predates domesticated agriculture. Monumental monolithic T-pillars erected at the Younger Dryas boundary and intentionally backfilled.",
+      tabs: {
+        "Overview": `
+          <h4 class="reader-heading">The Pre-Pottery Neolithic Paradigm Shift</h4>
+          <p>Excavated under the direction of archaeologist Klaus Schmidt (German Archaeological Institute), Göbekli Tepe overturned the orthodox sequence that settled agriculture must precede monumental architecture. Hunter-gatherer bands congregated to erect multi-ton circular megalithic enclosures centuries before wheat domestication or ceramic pottery appeared.</p>
+          <div class="reader-callout">
+            <strong>CHRONOLOGICAL PLACEMENT:</strong> Radiocarbon dating of pedogenic carbonate layers firmly anchors the oldest megalithic strata (Layer III) to approximately 9600 BCE—coinciding directly with the termination of the Younger Dryas cold period.
+          </div>
+        `,
+        "Megalithic Construction": `
+          <h4 class="reader-heading">T-Pillar Engineering & High Relief</h4>
+          <p>Enclosures feature pairs of central T-shaped limestone pillars reaching heights of up to 5.5 meters and weighing between 10 and 20 tons. Extracted from adjacent limestone plateaus using flint picks, wooden wedges, and levering fulcrums.</p>
+          <p>The pillars exhibit master-level bas-relief and high-relief zoomorphic carvings (vultures, foxes, scorpions, boars) executed directly into the hard stone without bronze or iron tooling.</p>
+        `,
+        "The Intentional Burial": `
+          <h4 class="reader-heading">Deliberate Deposition & Preservation</h4>
+          <p>Layer III was not collapsed by natural seismic decay; rather, it was systematically and deliberately backfilled with hundreds of cubic meters of limestone debris, animal bones (predominantly wild gazelle), and flint tools around 8000 BCE. This intentional entombment protected the carvings from Holocene erosion for ten millennia.</p>
+        `,
+        "Sources & References": `
+          <ul class="reader-sources-list">
+            <li>Schmidt, K. (2006). <em>Sie bauten die ersten Tempel: Das rätselhafte Heiligtum der Steinzeitjäger</em>. Verlag C.H. Beck.</li>
+            <li>Dietrich, O., et al. (2012). "The role of cult and feasting in the emergence of Neolithic communities." <em>Antiquity</em>, 86(333).</li>
+            <li>German Archaeological Institute (DAI) Field Reports, Şanlıurfa Project (2000–2024).</li>
+          </ul>
+        `
+      },
+      related: ["younger-dryas", "geometry", "acoustics"]
+    },
+    {
+      id: "indus",
+      name: "Indus Valley (Harappan)",
+      period: "c. 3300 – 1300 BCE",
+      region: "South Asia (Indus Basin)",
+      evidence: "documented",
+      img: "https://images.unsplash.com/photo-1608958435020-e8a7109ba809?auto=format&fit=crop&w=800&q=80",
+      summary: "Strict standardized baked brick ratios (4:2:1), underground covered municipal sanitation, and tidal dock maritime locks at Lothal.",
+      tabs: {
+        "Overview": `
+          <h4 class="reader-heading">The First Standardized Urban Civilization</h4>
+          <p>Spanning over 1 million square kilometers across modern Pakistan and northwestern India, the Harappan civilization flourished around the Indus and Ghaggar-Hakra river systems. Cities like Mohenjo-daro, Harappa, Dholavira, and Rakhigarhi accommodated populations up to 40,000 people without identifiable monumental palaces or monarchical royal burials.</p>
+        `,
+        "Hydraulics & Grid Urbanism": `
+          <h4 class="reader-heading">Municipal Drainage & Kiln Engineering</h4>
+          <p>Harappan cities were planned on orthogonal grid layouts aligned cardinal directions. Residential units featured private bathrooms connected directly via terracotta pipes into covered municipal brick drainage networks running below street levels—a level of public hygiene unprecedented in Bronze Age Mesopotamia or Egypt.</p>
+          <div class="reader-callout">
+            <strong>STANDARDIZED METROLOGY:</strong> Baked bricks across all sites strictly conformed to the 4:2:1 dimensional proportion (Length : Breadth : Thickness), ensuring maximum structural tensile strength in bonding.
+          </div>
+        `,
+        "Maritime Engineering": `
+          <h4 class="reader-heading">The Lothal Tidal Basin</h4>
+          <p>At Lothal in Gujarat, Harappan engineers constructed a massive trapezoidal burnt-brick basin (214 × 36 meters) identified as the world's earliest engineered tidal dock. Connected via a canal to the Sabarmati River, it incorporated inlet sluice gates and spillway channels to lock ships at high tide while flushing silt deposits.</p>
+        `,
+        "Decipherment Status": `
+          <div class="reader-callout">
+            <strong>UNDECIPHERED INSCRIPTIONS:</strong> Over 4,000 steatite stamp seals featuring the Indus script exist, but lack a bilingual inscription (like the Rosetta Stone). The script remains officially undeciphered despite computational and linguistic attempts.
+          </div>
+        `
+      },
+      related: ["antikythera", "geometry", "younger-dryas"]
+    },
+    {
+      id: "angkor",
+      name: "Angkor Grid Complex",
+      period: "c. 802 – 1431 CE",
+      region: "Southeast Asia (Cambodia)",
+      evidence: "documented",
+      img: "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=800&q=80",
+      summary: "LIDAR airborne surveys revealed vast concentric hydraulic grids, axial solar alignments, and circuit-like water regulation basins.",
+      tabs: {
+        "Overview": `
+          <h4 class="reader-heading">The Hydraulic Megacity</h4>
+          <p>Centering around Angkor Wat and Angkor Thom, the Khmer Empire engineered an urban network that sustained nearly 750,000 inhabitants. Airborne LIDAR surveys led by the Khmer Archaeology LiDAR Consortium (KALC) demonstrated that Angkor was not an isolated temple complex, but a vast low-density hydraulic megacity.</p>
+        `,
+        "Geometric & Water Engineering": `
+          <h4 class="reader-heading">Reservoirs & Axial Symmetry</h4>
+          <p>Two monumental artificial reservoirs—the West Baray (8 km × 2.1 km) and East Baray—stored over 100 million cubic meters of monsoon runoff to control seasonal flooding, feed three rice harvests annually, and stabilize temple foundations through water-table hydrostatic pressure.</p>
+          <div class="reader-callout">
+            <strong>CIRCUIT-LIKE CONCENTRIC PLANNING:</strong> Visual similarities to integrated microchip boards result from fractal Hindu-Buddhist cosmology (Mount Meru) executed with strict geometric symmetry, axial moats, and hydraulic flow-routing.
+          </div>
+        `,
+        "Solar Alignments": `
+          <h4 class="reader-heading">Spring Equinox Alignment</h4>
+          <p>On the morning of the Spring Equinox, observers standing at the western entrance causeway see the rising sun crest directly over the central lotus tower of Angkor Wat—demonstrating rigorous astronomical surveying.</p>
+        `
+      },
+      related: ["geometry", "alignment", "acoustics"]
     }
-  }
-  draw() {
-    ctx.fillStyle = `rgba(212, 175, 55, ${this.opacity})`;
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-    ctx.fill();
-  }
-}
+  ],
 
-for (let i = 0; i < particleCount; i++) {
-  particles.push(new Particle());
-}
+  knowledge: [
+    {
+      id: "geometry",
+      title: "Sacred Geometry, π (Pi) & φ (Phi)",
+      icon: "📐",
+      evidence: "debated",
+      summary: "Mathematical analysis of spherical coordinates, circle squaring, and golden ratio proportions across Giza, Babylon, and Greece.",
+      tabs: {
+        "What is Sacred Geometry?": `
+          <h4 class="reader-heading">Historical Geometric Proportioning</h4>
+          <p>In modern usage, 'Sacred Geometry' refers to geometric patterns and mathematical constants found in religious and monumental architecture. Historically, ancient builders did not view geometry as mystical abstraction, but as practical spatial truth (geometria: 'earth measurement').</p>
+          <p>Basic geometric constructions using string pegs and right-angle triangles (such as the 3:4:5 rope knot method documented in Egypt and India's <em>Sulba Sutras</em>) allowed large structures to be laid out without digital trigonometry.</p>
+        `,
+        "The Constant π (Pi)": `
+          <h4 class="reader-heading">Documentation of Circular Ratios</h4>
+          <p><strong>What is π?</strong> The ratio of a circle's circumference to its diameter ($C/d$).</p>
+          <p><strong>Rhind Papyrus (Egypt, c. 1550 BCE):</strong> Problem 50 gives an approximation of $\pi \approx (16/9)^2 \approx 3.1605$.</p>
+          <p><strong>Babylonian Tablets (Susa, c. 1900 BCE):</strong> Used $3 + 1/8 = 3.125$.</p>
+          <p><strong>Archimedes of Syracuse (c. 250 BCE):</strong> First rigorous mathematical proof bounding $\pi$ between $223/71 < \pi < 22/7$ ($3.1408 < \pi < 3.1428$) using 96-sided inscribed and circumscribed polygons.</p>
+          <div class="reader-callout">
+            <strong>THE GIZA DEBATE:</strong> The perimeter of the Great Pyramid divided by twice its height yields approximately $3.1415$. Mainstream scholarship debates whether this was a deliberate encoding of $\pi$ or the natural consequence of using a rolling drum wheel radius to measure base lengths.
+          </div>
+        `,
+        "The Constant φ (Golden Ratio)": `
+          <h4 class="reader-heading">Golden Section: Facts vs Retrospective Fitting</h4>
+          <p><strong>Mathematical Definition:</strong> Two quantities $a$ and $b$ are in the golden ratio ($\phi \approx 1.618033...$) when $(a+b)/a = a/b$.</p>
+          <p><strong>Documented History:</strong> First rigorously defined by Euclid of Alexandria in <em>Elements</em> (Book VI, Definition 3) as 'extreme and mean ratio'.</p>
+          <div class="reader-callout">
+            <strong>CRITICAL ARCHAEOLOGICAL DISTINCTION:</strong> While enthusiasts frequently overlay the Golden Spiral on the Parthenon, Great Pyramid, or Taj Mahal, measurements often fail when taking precise laser coordinates. In many cases, proportions align just as closely with integer ratios (like 4:9 in the Parthenon).
+          </div>
+        `,
+        "Sources & References": `
+          <ul class="reader-sources-list">
+            <li>Euclid, <em>Elements</em> (Heath translation, 1956). Dover Publications.</li>
+            <li>Robins, G., & Shute, C. (1987). <em>The Rhind Mathematical Papyrus: An Ancient Egyptian Text</em>. British Museum Publications.</li>
+            <li>Livio, M. (2002). <em>The Golden Ratio: The Story of Phi</em>. Broadway Books.</li>
+          </ul>
+        `
+      },
+      related: ["egypt", "angkor", "antikythera", "alignment"]
+    },
+    {
+      id: "acoustics",
+      title: "Archaeological Acoustics & Infrasound",
+      icon: "🔊",
+      evidence: "hypothesis",
+      summary: "Empirical studies of resonant chambers, 110–120 Hz hypogeum acoustics, and psychological impacts of sonic standing waves.",
+      tabs: {
+        "Acoustic Resonance": `
+          <h4 class="reader-heading">Physics of Stone Resonators</h4>
+          <p>When an enclosed architectural space has dimensions that are multiples of specific sound wavelengths, sound waves reflect between parallel stone walls to produce <strong>standing waves</strong> and resonant amplification (Helmholtz resonance).</p>
+        `,
+        "The 110–120 Hz Phenomenon": `
+          <h4 class="reader-heading">Measurements at Ħal Saflieni & Giza</h4>
+          <p>Studies conducted by acoustic researchers at the underground megalithic Ħal Saflieni Hypogeum in Malta and cairn chambers in the UK (such as Wayland's Smithy) detected pronounced resonant frequency peaks between 110 Hz and 122 Hz.</p>
+          <p>Neuro-acoustic testing (Cook et al., 2008) indicated that frequencies in the 110 Hz range can shift brain activity in the prefrontal cortex toward alpha/theta patterns, altering emotional processing during vocal chanting.</p>
+          <div class="reader-callout">
+            <strong>EVIDENCE BOUNDARY:</strong> The acoustic resonance of stone chambers is a physical, measurable reality. However, assertions that ancients used acoustics for antigravity stone levitation or interplanetary communication lack physical mechanism or textual documentation and remain speculative.
+          </div>
+        `,
+        "Greek Epidaurus Theatre": `
+          <h4 class="reader-heading">Empirical Acoustic Filtering</h4>
+          <p>Constructed in the 4th century BCE by Polykleitos the Younger, the Epidaurus theatre can transmit an actor's whisper to 14,000 spectators across 55 rows. Georgia Tech researchers demonstrated that the fluted limestone seating acts as an acoustic acoustic-filter: suppressing low-frequency crowd murmur (<500 Hz) while amplifying high-frequency vocal consonants.</p>
+        `
+      },
+      related: ["egypt", "geometry", "younger-dryas"]
+    },
+    {
+      id: "alignment",
+      title: "Geodetic & Solar Alignments",
+      icon: "🧭",
+      evidence: "documented",
+      summary: "True-North orientation surveying methods, solstitial shadow projections, and stellar transit observation before optical telescopes.",
+      tabs: {
+        "True North Precision": `
+          <h4 class="reader-heading">The Giza & Mesoamerican Baseline</h4>
+          <p>True North (geodetic north) differs from Magnetic North, which wanders over centuries. The Great Pyramid is oriented to geodetic north within 0.067 degrees. At Teotihuacan in Mexico, the Street of the Dead is oriented 15.5 degrees east of north, matching the Pleiades setting horizon.</p>
+        `,
+        "Surveying Techniques": `
+          <h4 class="reader-heading">How Ancients Determined Alignment</h4>
+          <p><strong>1. The Indian Circle (Shadow Method):</strong> Erecting a vertical gnomon staff inside a circle and marking where morning and afternoon shadows cross the circumference. The line connecting the intersections forms an exact East-West axis.</p>
+          <p><strong>2. Simultaneous Stellar Transit:</strong> Kate Spence (Cambridge University) proposed Egyptian astronomers observed pairs of opposing circumpolar stars (like Kochab and Mizar) through a plumb-line; when both aligned vertically, the plumb-line pointed directly to True North.</p>
+        `
+      },
+      related: ["egypt", "angkor", "geometry"]
+    },
+    {
+      id: "younger-dryas",
+      title: "Younger Dryas & Global Deluge Traditions",
+      icon: "🌊",
+      evidence: "debated",
+      summary: "Climatological meltwater pulses (12.8k–11.6k YA) evaluated alongside universal flood narratives and Vedic Yuga transition models.",
+      tabs: {
+        "Paleoclimate Evidence": `
+          <h4 class="reader-heading">The Younger Dryas Boundary (YDB)</h4>
+          <p>The Younger Dryas (c. 12,800 to 11,650 calibrated years ago) was a period of abrupt, severe cooling that interrupted the deglaciation of the Northern Hemisphere, followed by rapid warming and sudden Meltwater Pulses (MWP-1B).</p>
+          <p>The <strong>Younger Dryas Impact Hypothesis</strong> (Firestone et al., 2007) proposes that fragments of a disintegrating comet exploded over the Laurentide Ice Sheet, triggering wildfires, biomass burning, and catastrophic meltwater flooding into oceans.</p>
+        `,
+        "Mythology vs Geology": `
+          <h4 class="reader-heading">Universal Deluge Narratives</h4>
+          <p>Over 200 cultures maintain ancestral flood narratives: <em>The Epic of Gilgamesh</em> (Utnapishtim), Genesis (Noah), Hindu scriptures (Manu & Matsya Avatar), and Mesoamerican traditions (Coxcox).</p>
+          <div class="reader-callout">
+            <strong>SCHOLARLY DISTINCTION:</strong> While shared narratives reflect profound cultural memory of catastrophic post-glacial sea-level rises that submerged continental shelves (such as Sundaland and Doggerland), they do not substantiate a single instantaneous global wave covering Mount Everest.
+          </div>
+        `,
+        "Vedic Yuga Cycles": `
+          <h4 class="reader-heading">Cyclical Temporal Frameworks</h4>
+          <p>Classical Indic cosmology defines time as a repeating cycle of four Yugas: Satya, Treta, Dvapara, and Kali (progressing in a 4:3:2:1 ratio). Kali Yuga traditional chronology begins at 3102 BCE, marking an age of fractured attention, moral decay, and fragmented science following civilizational reset.</p>
+        `
+      },
+      related: ["gobekli", "egypt", "acoustics"]
+    }
+  ],
 
-function animateParticles() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  particles.forEach(p => {
-    p.update();
-    p.draw();
-  });
-  requestAnimationFrame(animateParticles);
-}
-animateParticles();
+  discoveries: [
+    {
+      id: "antikythera",
+      title: "The Antikythera Mechanism",
+      location: "Off Antikythera, Greece",
+      period: "c. 200 – 60 BCE",
+      evidence: "documented",
+      summary: "The world's earliest known analogue mechanical computer, predicting eclipses, lunar anomalies, and planetary cycles using differential gear trains.",
+      tabs: {
+        "Overview": `
+          <h4 class="reader-heading">Discovery & Micro-CT Imaging</h4>
+          <p>Recovered in 1901 by Greek sponge divers from a shipwreck at a depth of 45 meters, the device consists of 30 surviving bronze gear wheels housed within a wooden frame. Advanced 3D X-ray micro-computed tomography by the Antikythera Mechanism Research Project (AMRP) reconstructed the entire gear train.</p>
+        `,
+        "Mechanical Operation": `
+          <h4 class="reader-heading">Calculating Epicyclic Anomalies</h4>
+          <p>The device computed:</p>
+          <ul class="reader-sources-list">
+            <li><strong>Metonic Cycle:</strong> 235 lunar months tracked across a 19-year calendar.</li>
+            <li><strong>Saros Cycle:</strong> 223-month eclipse prediction spiral, including glyphs predicting eclipse hour and solar color.</li>
+            <li><strong>Variable Lunar Speed:</strong> Replicated Hipparchus's lunar anomaly theory using a pin-and-slot eccentric gear mechanism to model Keplerian elliptical speed variations.</li>
+          </ul>
+        `
+      },
+      related: ["geometry", "egypt", "indus"]
+    }
+  ],
 
-/* 3D Glass Tilt Card Physics */
-document.querySelectorAll('[data-tilt]').forEach(card => {
-  card.addEventListener('mousemove', e => {
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-    const rotateX = ((y - centerY) / centerY) * -6;
-    const rotateY = ((x - centerX) / centerX) * 6;
+  mysteries: [
+    {
+      id: "hard-stone-drilling",
+      title: "Precision Hard-Stone Extraction & Core Drilling",
+      evidence: "debated",
+      summary: "Examining cylindrical core drill holes in diorite, basalt, and rose granite with micro-groove feed spirals.",
+      tabs: {
+        "The Phenomenon": `
+          <h4 class="reader-heading">Hardness & Tooling Contradictions</h4>
+          <p>Petrie (1883) noted that diorite and granite drill cores from Giza and Abusir exhibit continuous spiral striations with a feed pitch of up to 2.5 mm per revolution. Given that diorite rates 7 on Mohs scale and pure copper is only 3, simple copper hand drilling requires abrasive quartz or corundum slurry.</p>
+        `,
+        "Experimental Archaeology": `
+          <h4 class="reader-heading">Stocks & Modern Replications</h4>
+          <p>Denys Stocks demonstrated that copper tube drills with fine quartz sand slurry can cut granite, but achieved penetration rates of only a few millimeters per hour. The high uniform pressure and rapid feed marks on specific museum cores remain an open engineering inquiry.</p>
+        `
+      },
+      related: ["egypt", "geometry", "younger-dryas"]
+    },
+    {
+      id: "megalithic-logistics",
+      title: "Multi-Hundred Ton Monolithic Logistics",
+      evidence: "documented",
+      summary: "Moving the Trilithon stones at Baalbek (800+ tons) and the Ramesseum Colossus across natural terrain without combustion engines.",
+      tabs: {
+        "Documented Levers vs Unexplained Limits": `
+          <h4 class="reader-heading">Mechanical Advantage & Friction</h4>
+          <p>Roman and Egyptian records document capstans, pulleys, and sledge lubrication (the tomb of Djehutihotep depicts 172 men pulling a 58-ton statue on wooden sledges with water poured on clay).</p>
+          <p>However, the 800-ton Trilithon blocks at Baalbek in Lebanon were elevated into a terrace wall 7 meters above ground, posing extreme challenges to ancient timber tensile strength under concentrated load points.</p>
+        `
+      },
+      related: ["egypt", "gobekli", "geometry"]
+    }
+  ],
 
-    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
-  });
-
-  card.addEventListener('mouseleave', () => {
-    card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
-  });
-});
-
-/* Digital Archive Database (Modal Engine) */
-const archiveData = {
-  egypt: {
-    title: "Ancient Egypt // Acoustic Subterranean Horizon",
-    epoch: "c. 3100 – 30 BCE &bull; Lower Nile Basin",
-    content: `
-      <p style="color: #8b94a5; line-height: 1.6; margin-bottom: 1rem;">
-        Beyond ceremonial functions, the Giza complex incorporates hard diorite drill cores with high spiral penetration rates, multi-ton granite beams engineered inside the King's Chamber, and true-north cardinal accuracy down to fractions of a degree.
-      </p>
-      <div style="background: rgba(212, 175, 55, 0.08); border-left: 3px solid #d4af37; padding: 0.85rem; margin-bottom: 1rem;">
-        <strong style="color: #f3f5f8;">Acoustic Metric:</strong> Internal granite resonance matches ~110-120 Hz, inducing sustained alpha/theta states in neuro-acoustic testing.
-      </div>
-      <p style="color: #8b94a5; font-size: 0.9rem;">
-        Scholarly consensus categorizes monuments as dynastic tombs; anomalous research posits reuse of older megalithic foundations dating closer to the wet African period.
-      </p>
-    `
-  },
-  gobekli: {
-    title: "Göbekli Tepe Horizon // The 12,000 YA Boundary",
-    epoch: "c. 9600 BCE &bull; Anatolia / Upper Mesopotamia",
-    content: `
-      <p style="color: #8b94a5; line-height: 1.6; margin-bottom: 1rem;">
-        Discovered by Klaus Schmidt, Göbekli Tepe completely shattered the old textbook timeline (farming → settlement → religion → megaliths). It proves massive 20-ton T-pillars with intricate high-relief animal carvings were engineered prior to metal tools or settled agriculture.
-      </p>
-      <div style="background: rgba(230, 154, 53, 0.08); border-left: 3px solid #e69a35; padding: 0.85rem; margin-bottom: 1rem;">
-        <strong style="color: #f3f5f8;">Younger Dryas Alignment:</strong> The construction era coincides precisely with the catastrophic Younger Dryas meltwater phase (c. 11,600 years ago).
-      </div>
-      <p style="color: #8b94a5; font-size: 0.9rem;">
-        The entire complex was intentionally buried under thousands of tons of clean soil, functioning as a deliberate time-capsule of pre-flood cosmological knowledge.
-      </p>
-    `
-  },
-  indus: {
-    title: "Indus Valley (Harappan) // Hydraulic Civilization",
-    epoch: "c. 3300 – 1300 BCE &bull; Indus & Ghaggar-Hakra Basin",
-    content: `
-      <p style="color: #8b94a5; line-height: 1.6; margin-bottom: 1rem;">
-        Encompassing Mohenjo-daro, Harappa, Dholavira, and Lothal. Featuring strictly standardized baked bricks with the 4:2:1 ratio, covered municipal sewage, and zero palaces or weapon-heavy fortifications.
-      </p>
-      <div style="background: rgba(72, 187, 120, 0.08); border-left: 3px solid #68d391; padding: 0.85rem; margin-bottom: 1rem;">
-        <strong style="color: #f3f5f8;">Maritime Engineering:</strong> Lothal contains the world's earliest known engineered tidal dock, navigating siltation via sluice gates.
-      </div>
-    `
-  },
-  angkor: {
-    title: "Angkor Wat Complex // Sacred Central Processing Unit",
-    epoch: "c. 1100 CE &bull; Pre-Khmer Sacred Grid",
-    content: `
-      <p style="color: #8b94a5; line-height: 1.6; margin-bottom: 1rem;">
-        LIDAR surveys revealed that Angkor Wat is merely the center of an enormous subterranean geometric grid. Its layout mirrors circuit board micro-architecture designed to regulate massive fluid water flows and solar alignments across equinoxes.
-      </p>
-      <div style="background: rgba(212, 175, 55, 0.08); border-left: 3px solid #d4af37; padding: 0.85rem; margin-bottom: 1rem;">
-        <strong style="color: #f3f5f8;">Concentric Geometry:</strong> Axial symmetries organize flow and mental attention, harmonizing human perception with seasonal astrological transitions.
-      </div>
-    `
-  }
+  timeline: [
+    {
+      id: "t1",
+      period: "c. 10,800 – 9,600 BCE",
+      title: "Younger Dryas Boundary & Göbekli Horizon",
+      desc: "Abrupt paleoclimatic oscillation, catastrophic meltwater release, and intentional burial of monolithic stone sanctuaries across Upper Mesopotamia.",
+      archiveRef: "gobekli"
+    },
+    {
+      id: "t2",
+      period: "c. 3300 – 1900 BCE",
+      title: "Indus & Sumerian Urban Apex",
+      desc: "Orthogonal grid urbanism, covered municipal sanitation, and maritime trade routes connecting Dilmun, Magan, and Meluhha.",
+      archiveRef: "indus"
+    },
+    {
+      id: "t3",
+      period: "c. 2600 – 2400 BCE",
+      title: "Old Kingdom Megalithic Pyramid Construction",
+      desc: "Erection of the Giza monuments displaying geodetic True North alignment, deep core drilling, and internal granite Helmholtz acoustics.",
+      archiveRef: "egypt"
+    },
+    {
+      id: "t4",
+      period: "c. 3102 BCE – Present",
+      title: "Traditional Kali Yuga Chronology",
+      desc: "Vedic civilizational model documenting the transition toward material density, social fragmentation, and loss of integrated ancient sciences.",
+      archiveRef: "younger-dryas"
+    }
+  ]
 };
 
-function openArchiveModal(civKey) {
-  const modal = document.getElementById('archive-modal');
-  const body = document.getElementById('modal-body');
-  const data = archiveData[civKey];
+// 2. Ambient Particle Canvas Animation
+function initParticleCanvas() {
+  const canvas = document.getElementById('particle-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+  const count = 40;
 
-  if (!data) return;
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  window.addEventListener('resize', resize);
+  resize();
 
+  class DustParticle {
+    constructor() { this.reset(); }
+    reset() {
+      this.x = Math.random() * canvas.width;
+      this.y = Math.random() * canvas.height;
+      this.size = Math.random() * 1.5 + 0.4;
+      this.speedX = Math.random() * 0.3 - 0.15;
+      this.speedY = Math.random() * 0.3 - 0.15;
+      this.opacity = Math.random() * 0.45 + 0.1;
+    }
+    update() {
+      this.x += this.speedX;
+      this.y += this.speedY;
+      if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) this.reset();
+    }
+    draw() {
+      ctx.fillStyle = `rgba(212, 175, 55, ${this.opacity})`;
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+
+  for (let i = 0; i < count; i++) particles.push(new DustParticle());
+
+  function loop() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => { p.update(); p.draw(); });
+    requestAnimationFrame(loop);
+  }
+  loop();
+}
+
+// 3. Render Functions for Grids
+function renderCivilizations() {
+  const grid = document.getElementById('civilizationsGrid');
+  if (!grid) return;
+
+  grid.innerHTML = ARCHIVE_DATABASE.civilizations.map(c => `
+    <article class="civ-card glass-panel" onclick="openArchiveReader('civilizations', '${c.id}')">
+      <div class="card-img-wrap">
+        <img src="${c.img}" alt="${c.name}" class="card-img" loading="lazy">
+        <div class="card-img-overlay"></div>
+        <span class="card-period-tag">${c.period}</span>
+      </div>
+      <div class="card-body">
+        <span class="card-region">${c.region}</span>
+        <h3 class="civ-title">${c.name}</h3>
+        <p class="civ-desc">${c.summary}</p>
+        <div class="card-footer">
+          <span class="badge-evidence ${c.evidence}">${c.evidence}</span>
+          <span class="card-open-prompt">ACCESS ARCHIVE &rarr;</span>
+        </div>
+      </div>
+    </article>
+  `).join('');
+}
+
+function renderKnowledge() {
+  const grid = document.getElementById('knowledgeGrid');
+  if (!grid) return;
+
+  grid.innerHTML = ARCHIVE_DATABASE.knowledge.map(k => `
+    <article class="knowledge-card glass-panel" onclick="openArchiveReader('knowledge', '${k.id}')">
+      <div>
+        <div class="k-icon-wrap">${k.icon}</div>
+        <h3 class="k-title">${k.title}</h3>
+        <p class="k-desc">${k.summary}</p>
+      </div>
+      <div class="k-meta">
+        <span class="badge-evidence ${k.evidence}">${k.evidence}</span>
+        <span class="card-open-prompt">READ MONOGRAPH &rarr;</span>
+      </div>
+    </article>
+  `).join('');
+}
+
+function renderDiscoveries() {
+  const grid = document.getElementById('discoveriesGrid');
+  if (!grid) return;
+
+  grid.innerHTML = ARCHIVE_DATABASE.discoveries.map(d => `
+    <article class="discovery-card glass-panel" onclick="openArchiveReader('discoveries', '${d.id}')">
+      <span class="discovery-loc">${d.location} &bull; ${d.period}</span>
+      <h3 class="discovery-title">${d.title}</h3>
+      <p class="discovery-excerpt">${d.summary}</p>
+      <div class="card-footer">
+        <span class="badge-evidence ${d.evidence}">${d.evidence}</span>
+        <span class="card-open-prompt">INSPECT REPORT &rarr;</span>
+      </div>
+    </article>
+  `).join('');
+}
+
+function renderTimeline() {
+  const container = document.getElementById('timelineTree');
+  if (!container) return;
+
+  container.innerHTML = ARCHIVE_DATABASE.timeline.map(t => `
+    <div class="timeline-node" onclick="openArchiveByRef('${t.archiveRef}')">
+      <div class="node-marker"></div>
+      <div class="node-content glass-panel">
+        <span class="node-date">${t.period}</span>
+        <h4 class="node-title">${t.title}</h4>
+        <p class="node-text">${t.desc}</p>
+        <span class="card-open-prompt">VIEW CHRONOLOGICAL CONTEXT &rarr;</span>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderMysteries() {
+  const grid = document.getElementById('mysteryGrid');
+  if (!grid) return;
+
+  grid.innerHTML = ARCHIVE_DATABASE.mysteries.map(m => `
+    <article class="mystery-card glass-panel" onclick="openArchiveReader('mysteries', '${m.id}')">
+      <span class="badge-evidence ${m.evidence}">${m.evidence}</span>
+      <h3 class="mystery-heading">${m.title}</h3>
+      <p class="mystery-body">${m.summary}</p>
+      <div class="card-footer">
+        <span class="card-open-prompt">EXAMINE INQUIRY &rarr;</span>
+      </div>
+    </article>
+  `).join('');
+}
+
+// 4. Archive Reader Engine (Progressive Disclosure)
+function openArchiveReader(categoryKey, itemId) {
+  const category = ARCHIVE_DATABASE[categoryKey];
+  if (!category) return;
+  const item = category.find(x => x.id === itemId);
+  if (!item) return;
+
+  const modal = document.getElementById('archiveReaderModal');
+  const catLabel = document.getElementById('readerCategory');
+  const badge = document.getElementById('readerBadge');
+  const tabsBar = document.getElementById('readerTabsBar');
+  const body = document.getElementById('readerBody');
+  const chips = document.getElementById('readerRelatedChips');
+
+  catLabel.textContent = categoryKey.toUpperCase() + " // ARCHIVE";
+  badge.textContent = (item.evidence || 'DOCUMENTED').toUpperCase();
+  badge.className = `badge-evidence ${item.evidence || 'documented'}`;
+
+  // Build Tabs
+  const tabKeys = Object.keys(item.tabs);
+  tabsBar.innerHTML = tabKeys.map((tab, idx) => `
+    <button class="reader-tab-btn ${idx === 0 ? 'active' : ''}" onclick="switchReaderTab('${categoryKey}', '${itemId}', '${tab}', this)">
+      ${tab}
+    </button>
+  `).join('');
+
+  // Initial Tab Content
   body.innerHTML = `
-    <span style="font-family: var(--font-mono); font-size: 0.75rem; color: #d4af37; text-transform: uppercase;">${data.epoch}</span>
-    <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin: 0.5rem 0 1.25rem; color: #f3f5f8;">${data.title}</h3>
-    ${data.content}
+    <h2 class="reader-article-title">${item.name || item.title}</h2>
+    <div class="reader-article-sub">${item.period || item.location || 'ARCHIVAL SURVEY'}</div>
+    <div class="reader-section-block">
+      ${item.tabs[tabKeys[0]]}
+    </div>
   `;
 
-  modal.style.display = 'flex';
-}
-
-function closeArchiveModal() {
-  document.getElementById('archive-modal').style.display = 'none';
-}
-
-window.addEventListener('click', e => {
-  const modal = document.getElementById('archive-modal');
-  if (e.target === modal) {
-    closeArchiveModal();
+  // Related Topics Chips
+  if (item.related && item.related.length > 0) {
+    chips.innerHTML = item.related.map(relId => {
+      const relItem = findItemGlobally(relId);
+      if (!relItem) return '';
+      return `<span class="related-chip" onclick="openArchiveByRef('${relId}')">${relItem.name || relItem.title} ↗</span>`;
+    }).join('');
+  } else {
+    chips.innerHTML = '<span class="text-dim">No further indexed references.</span>';
   }
+
+  modal.classList.add('active');
+  modal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+}
+
+function switchReaderTab(categoryKey, itemId, tabName, btnEl) {
+  document.querySelectorAll('.reader-tab-btn').forEach(b => b.classList.remove('active'));
+  btnEl.classList.add('active');
+
+  const item = ARCHIVE_DATABASE[categoryKey].find(x => x.id === itemId);
+  if (!item) return;
+
+  const body = document.getElementById('readerBody');
+  body.innerHTML = `
+    <h2 class="reader-article-title">${item.name || item.title}</h2>
+    <div class="reader-article-sub">${tabName.toUpperCase()} &bull; ${item.period || ''}</div>
+    <div class="reader-section-block">
+      ${item.tabs[tabName]}
+    </div>
+  `;
+}
+
+function closeArchiveReader() {
+  const modal = document.getElementById('archiveReaderModal');
+  modal.classList.remove('active');
+  modal.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = 'auto';
+}
+
+function findItemGlobally(itemId) {
+  for (const cat in ARCHIVE_DATABASE) {
+    const found = ARCHIVE_DATABASE[cat].find(x => x.id === itemId);
+    if (found) return { ...found, category: cat };
+  }
+  return null;
+}
+
+function openArchiveByRef(refId) {
+  const found = findItemGlobally(refId);
+  if (found) {
+    openArchiveReader(found.category, found.id);
+  }
+}
+
+// 5. Global Client-side Search Engine
+function initSearch() {
+  const openBtn = document.getElementById('searchOpenBtn');
+  const modal = document.getElementById('searchModal');
+  const input = document.getElementById('archiveSearchInput');
+  const results = document.getElementById('searchResults');
+
+  openBtn.addEventListener('click', openSearchModal);
+
+  window.addEventListener('keydown', e => {
+    if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+      e.preventDefault();
+      openSearchModal();
+    }
+    if (e.key === 'Escape') {
+      closeSearchModal();
+      closeArchiveReader();
+    }
+  });
+
+  input.addEventListener('input', e => {
+    const q = e.target.value.toLowerCase().trim();
+    if (q.length < 2) {
+      results.innerHTML = '<p class="search-hint">Type keywords like "Antikythera", "Pi", "Acoustics", "Egypt", or "Younger Dryas"...</p>';
+      return;
+    }
+
+    const matches = [];
+    for (const catKey of ['civilizations', 'knowledge', 'discoveries', 'mysteries']) {
+      ARCHIVE_DATABASE[catKey].forEach(item => {
+        const text = `${item.name || item.title} ${item.summary} ${JSON.stringify(item.tabs)}`.toLowerCase();
+        if (text.includes(q)) {
+          matches.push({ item, catKey });
+        }
+      });
+    }
+
+    if (matches.length === 0) {
+      results.innerHTML = `<p class="search-hint">No archival records matching "${q}".</p>`;
+      return;
+    }
+
+    results.innerHTML = matches.map(({ item, catKey }) => `
+      <div class="search-result-item" onclick="closeSearchModal(); openArchiveReader('${catKey}', '${item.id}')">
+        <div class="search-item-header">
+          <span class="search-item-title">${item.name || item.title}</span>
+          <span class="search-item-type">${catKey.toUpperCase()}</span>
+        </div>
+        <p class="search-item-desc">${item.summary.substring(0, 110)}...</p>
+      </div>
+    `).join('');
+  });
+}
+
+function openSearchModal() {
+  const modal = document.getElementById('searchModal');
+  modal.classList.add('active');
+  modal.setAttribute('aria-hidden', 'false');
+  setTimeout(() => document.getElementById('archiveSearchInput').focus(), 50);
+}
+
+function closeSearchModal() {
+  const modal = document.getElementById('searchModal');
+  modal.classList.remove('active');
+  modal.setAttribute('aria-hidden', 'true');
+}
+
+// 6. Bootstrap Architecture
+document.addEventListener('DOMContentLoaded', () => {
+  initParticleCanvas();
+  renderCivilizations();
+  renderKnowledge();
+  renderDiscoveries();
+  renderTimeline();
+  renderMysteries();
+  initSearch();
 });
