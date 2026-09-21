@@ -3,243 +3,312 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chronicles of the Forgotten | Ancient Civilizations Archive</title>
+  <title>CHRONOS // Lost Civilizations & Anomalous Archives</title>
   
+  <!-- Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="obsidian-theme">
 
+  <!-- Background Ambience & Canvas Particles -->
+  <div class="ambient-glow glow-gold"></div>
+  <div class="ambient-glow glow-amber"></div>
+  <canvas id="particle-canvas"></canvas>
+
+  <!-- Navigation Bar -->
   <header class="navbar">
     <div class="nav-container">
-      <a href="#" class="brand-logo">CHRONOS<span>ARCHIVE</span></a>
+      <a href="#hero" class="brand-logo">
+        <span class="logo-symbol">⟁</span> CHRONOS<span class="gold-accent">ARCHIVE</span>
+      </a>
       <nav class="nav-links">
-        <a href="#hero">Home</a>
+        <a href="#hero">Overview</a>
         <a href="#civilizations">Civilizations</a>
-        <a href="#knowledge">Knowledge</a>
-        <a href="#timeline">Timeline</a>
-        <a href="#mysteries">Mysteries</a>
+        <a href="#knowledge">Lost Sciences</a>
+        <a href="#timeline">Chronology</a>
+        <a href="#mysteries">Anomalies</a>
       </nav>
       <div class="nav-actions">
-        <button class="search-trigger" aria-label="Search Archives">🔍</button>
+        <div class="status-indicator">
+          <span class="status-dot"></span>
+          <span class="status-text">HORIZON 12K YA</span>
+        </div>
       </div>
     </div>
   </header>
 
   <main>
+    <!-- Cinematic Hero Section -->
     <section id="hero" class="hero-section">
+      <div class="hero-bg-overlay"></div>
       <div class="hero-content">
-        <div class="badge">Digital Archaeological Database</div>
-        <h1 class="hero-title">Civilizations Lost to Time.<br><span class="gold-text">Knowledge That Survived.</span></h1>
+        <div class="hero-badge">
+          <span class="badge-icon">🏛</span>
+          <span>Digital Archaeological Archive &bull; Pre-Cataclysm Horizon</span>
+        </div>
+        <h1 class="hero-title">
+          Civilizations Lost to Time.<br>
+          <span class="gold-gradient-text">Knowledge That Survived.</span>
+        </h1>
         <p class="hero-subtitle">
-          Explore the lost technologies, sacred geometry, acoustic architecture, and cataclysmic transitions of the ancient world.
+          Exploring pre-dynastic megalithic architecture, subterranean acoustic resonance, sacred astronomical geometry, and planetary reset boundaries.
         </p>
         <div class="hero-cta-group">
-          <a href="#civilizations" class="btn btn-primary">Explore Civilizations</a>
-          <a href="#knowledge" class="btn btn-secondary">Browse Ancient Knowledge</a>
+          <a href="#civilizations" class="btn btn-gold">Explore Civilizations</a>
+          <a href="#knowledge" class="btn btn-glass">Browse Ancient Knowledge</a>
         </div>
       </div>
+      <div class="scroll-down-prompt">
+        <span>SCROLL ARCHIVES</span>
+        <div class="scroll-line"></div>
+      </div>
     </section>
-<!-- Section 2: Civilization Explorer -->
+
+    <!-- Civilization Explorer Cards -->
     <section id="civilizations" class="section-container">
       <div class="section-header">
-        <span class="sub-badge">Digital Archives</span>
+        <span class="sub-badge">Digital Field Records</span>
         <h2 class="section-title">Civilization Explorer</h2>
-        <p class="section-desc">Cataloging anomalous architectural precision and ancestral science.</p>
+        <p class="section-desc">Anomalous architectural engineering, urban planning, and acoustic systems.</p>
       </div>
 
       <div class="civ-grid">
-        <article class="civ-card">
-          <div class="card-meta">
-            <span class="meta-tag">c. 3100 – 30 BCE</span>
-            <span class="meta-tag">Nile Valley</span>
+        <!-- Card 1: Egypt -->
+        <div class="civ-card glass-panel" data-tilt>
+          <div class="card-image-wrap">
+            <img src="https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?auto=format&fit=crop&w=800&q=80" alt="Ancient Egypt Giza Pyramids" class="card-img" />
+            <div class="card-img-gradient"></div>
+            <span class="epoch-tag">c. 3100 – 30 BCE</span>
           </div>
-          <h3 class="civ-name">Ancient Egypt</h3>
-          <p class="civ-text">
-            Granite precision core drilling, subterranean acoustic chambers, and exact cardinal alignment.
-          </p>
-          <div class="civ-footer">
-            <span class="focus-label">Focus: Sacred Acoustics</span>
-            <span class="card-arrow">&rarr;</span>
+          <div class="card-body">
+            <span class="region-label">Nile Valley</span>
+            <h3 class="civ-title">Ancient Egypt</h3>
+            <p class="civ-summary">
+              Precision multi-ton granite transport, true-north astronomical alignments, and interior megalithic chambers exhibiting resonant acoustic properties.
+            </p>
+            <div class="card-footer">
+              <span class="spec-highlight">Acoustic Resonance & Alignment</span>
+              <button class="card-read-btn" onclick="openArchiveModal('egypt')">View Archive ↗</button>
+            </div>
           </div>
-        </article>
+        </div>
 
-        <article class="civ-card highlight-card">
-          <div class="card-meta">
-            <span class="meta-tag">c. 9600 BCE</span>
-            <span class="meta-tag">Anatolia</span>
+        <!-- Card 2: Gobekli Tepe -->
+        <div class="civ-card glass-panel highlight-gold" data-tilt>
+          <div class="card-image-wrap">
+            <img src="https://images.unsplash.com/photo-1599833975787-5c143f373c30?auto=format&fit=crop&w=800&q=80" alt="Gobekli Tepe Megaliths" class="card-img" />
+            <div class="card-img-gradient"></div>
+            <span class="epoch-tag pre-flood">c. 9600 BCE (11.6k YA)</span>
           </div>
-          <h3 class="civ-name">Göbekli Tepe Horizon</h3>
-          <p class="civ-text">
-            Predates agriculture. Monolithic megalith enclosures erected at the Younger Dryas boundary.
-          </p>
-          <div class="civ-footer">
-            <span class="focus-label">Focus: Pre-Cataclysm Architecture</span>
-            <span class="card-arrow">&rarr;</span>
+          <div class="card-body">
+            <span class="region-label">Upper Mesopotamia</span>
+            <h3 class="civ-title">Göbekli Tepe Horizon</h3>
+            <p class="civ-summary">
+              Predates agriculture and pottery. Monumental T-shaped monolithic enclosures engineered at the Younger Dryas boundary, intentionally buried.
+            </p>
+            <div class="card-footer">
+              <span class="spec-highlight">Pre-Cataclysm Megaliths</span>
+              <button class="card-read-btn" onclick="openArchiveModal('gobekli')">View Archive ↗</button>
+            </div>
           </div>
-        </article>
+        </div>
 
-        <article class="civ-card">
-          <div class="card-meta">
-            <span class="meta-tag">c. 3300 – 1300 BCE</span>
-            <span class="meta-tag">South Asia</span>
+        <!-- Card 3: Indus Valley -->
+        <div class="civ-card glass-panel" data-tilt>
+          <div class="card-image-wrap">
+            <img src="https://images.unsplash.com/photo-1608958435020-e8a7109ba809?auto=format&fit=crop&w=800&q=80" alt="Ancient Indus Valley Ruins" class="card-img" />
+            <div class="card-img-gradient"></div>
+            <span class="epoch-tag">c. 3300 – 1300 BCE</span>
           </div>
-          <h3 class="civ-name">Indus Valley</h3>
-          <p class="civ-text">
-            Standardized kiln brick ratios, covered subterranean sanitation, and sophisticated dock engineering.
-          </p>
-          <div class="civ-footer">
-            <span class="focus-label">Focus: Hydraulic Urbanism</span>
-            <span class="card-arrow">&rarr;</span>
+          <div class="card-body">
+            <span class="region-label">South Asia</span>
+            <h3 class="civ-title">Indus Valley (Harappan)</h3>
+            <p class="civ-summary">
+              Vast standardized kiln-brick urban grids, subterranean covered sanitation systems, and tidal dock engineering at Lothal unmatched for millennia.
+            </p>
+            <div class="card-footer">
+              <span class="spec-highlight">Modular Hydraulic Urbanism</span>
+              <button class="card-read-btn" onclick="openArchiveModal('indus')">View Archive ↗</button>
+            </div>
           </div>
-        </article>
+        </div>
 
-        <article class="civ-card">
-          <div class="card-meta">
-            <span class="meta-tag">c. 2000 BCE – 900 CE</span>
-            <span class="meta-tag">Mesoamerica</span>
+        <!-- Card 4: Angkor Wat & Sacred Geometry -->
+        <div class="civ-card glass-panel" data-tilt>
+          <div class="card-image-wrap">
+            <img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=800&q=80" alt="Angkor Wat Aerial Perspective" class="card-img" />
+            <div class="card-img-gradient"></div>
+            <span class="epoch-tag">c. 1100 CE / Ancient Horizon</span>
           </div>
-          <h3 class="civ-name">Maya Civilization</h3>
-          <p class="civ-text">
-            Complex cyclical calendars, planetary tracking of Venus, and stepped pyramid acoustic dispersion.
-          </p>
-          <div class="civ-footer">
-            <span class="focus-label">Focus: Cyclical Cosmology</span>
-            <span class="card-arrow">&rarr;</span>
+          <div class="card-body">
+            <span class="region-label">Southeast Asia</span>
+            <h3 class="civ-title">Angkor Grid System</h3>
+            <p class="civ-summary">
+              LIDAR mapping revealed mathematical microchip-like concentric geometric symmetry, massive reservoir hydraulics, and solar transit alignments.
+            </p>
+            <div class="card-footer">
+              <span class="spec-highlight">Geometric Flow Architecture</span>
+              <button class="card-read-btn" onclick="openArchiveModal('angkor')">View Archive ↗</button>
+            </div>
           </div>
-        </article>
+        </div>
       </div>
     </section>
 
-    <!-- Section 3: Ancient Knowledge Matrix -->
+    <!-- Ancient Knowledge Section -->
     <section id="knowledge" class="section-container">
       <div class="section-header">
-        <span class="sub-badge">Recovered Sciences</span>
+        <span class="sub-badge">Scientific Matrix</span>
         <h2 class="section-title">What Did The Ancients Know?</h2>
-        <p class="section-desc">Principles obscured by subsequent historical catastrophes.</p>
+        <p class="section-desc">Principles obscured by cataclysms and historical resets.</p>
       </div>
 
       <div class="knowledge-grid">
-        <div class="knowledge-card">
-          <div class="k-icon">📐</div>
-          <h4>Sacred Geometry & Math</h4>
-          <p>Integration of Pi, Phi, and harmonic fractions into monumental foundations.</p>
+        <div class="knowledge-card glass-panel">
+          <div class="k-icon-wrap">📐</div>
+          <h4 class="k-title">Sacred Geometry & Pi / Phi</h4>
+          <p class="k-desc">Direct encoding of planetary dimensions, golden ratio proportions, and spherical trigonometry in stone foundations without written notation.</p>
         </div>
-        <div class="knowledge-card">
-          <div class="k-icon">🔊</div>
-          <h4>Acoustic Resonance</h4>
-          <p>Interior stone chambers engineered to amplify specific infrasound frequencies.</p>
+
+        <div class="knowledge-card glass-panel">
+          <div class="k-icon-wrap">🔊</div>
+          <h4 class="k-title">Acoustics & Infrasound</h4>
+          <p class="k-desc">Internal granite chambers cut with natural resonance near 110–120 Hz, affecting human brainwave states and acoustic levitation hypotheses.</p>
         </div>
-        <div class="knowledge-card">
-          <div class="k-icon">🌌</div>
-          <h4>Cosmic Alignment</h4>
-          <p>Structures positioned precisely toward solstices, equinoxes, and stellar belts.</p>
+
+        <div class="knowledge-card glass-panel">
+          <div class="k-icon-wrap">🧭</div>
+          <h4 class="k-title">Geodetic & Solar Alignment</h4>
+          <p class="k-desc">True North orientation precision down to 3/60ths of a degree, matching equinoctial processions and stellar constellations across millennia.</p>
         </div>
-        <div class="knowledge-card">
-          <div class="k-icon">⏳</div>
-          <h4>Yuga & Great Cataclysms</h4>
-          <p>Universal flood narratives documenting cycles of systemic civilization resets.</p>
+
+        <div class="knowledge-card glass-panel">
+          <div class="k-icon-wrap">🌊</div>
+          <h4 class="k-title">Younger Dryas & Yuga Cycles</h4>
+          <p class="k-desc">Shared mythological memories of catastrophic deluge boundaries (c. 11,600 YA) and Vedic Yuga transitions between Satya, Treta, Dvapara, and Kali.</p>
         </div>
       </div>
     </section>
 
-    <!-- Section 4: Comparative Cataclysm Timeline -->
+    <!-- Interactive Chronology / Timeline -->
     <section id="timeline" class="section-container">
       <div class="section-header">
-        <span class="sub-badge">Chronological Horizon</span>
-        <h2 class="section-title">Timeline of Civilizations & Resets</h2>
-        <p class="section-desc">Correlating archaeological epochs with ancient cataclysmic boundaries.</p>
+        <span class="sub-badge">Temporal Stratigraphy</span>
+        <h2 class="section-title">Chronology of Resets & Peaks</h2>
+        <p class="section-desc">Comparing archaeological milestones with sudden climatological resets.</p>
       </div>
 
-      <div class="timeline-container">
-        <!-- Event 1 -->
-        <div class="timeline-item">
-          <div class="timeline-marker"></div>
-          <div class="timeline-box">
-            <span class="t-badge">c. 10,800 – 9,600 BCE</span>
-            <h4 class="t-title">Younger Dryas Cataclysm & Göbekli Horizon</h4>
-            <p class="t-desc">
-              Rapid climate oscillation, meltwater flooding phases, and intentional burial of monumental stone enclosures across Upper Mesopotamia.
+      <div class="timeline-tree">
+        <div class="timeline-node">
+          <div class="node-marker glow-marker"></div>
+          <div class="node-content glass-panel">
+            <span class="node-date gold-accent">c. 10,800 – 9,600 BCE</span>
+            <h4 class="node-title">The Younger Dryas Impact & Flood Phase</h4>
+            <p class="node-text">
+              Sudden cooling followed by rapid meltwater pulses. Global sea level surge submerging coastal settlements. Göbekli Tepe is intentionally preserved and buried.
             </p>
           </div>
         </div>
 
-        <!-- Event 2 -->
-        <div class="timeline-item">
-          <div class="timeline-marker"></div>
-          <div class="timeline-box">
-            <span class="t-badge">c. 3300 – 1900 BCE</span>
-            <h4 class="t-title">Indus & Early Dynastic Urban Apex</h4>
-            <p class="t-desc">
-              Mass standardized brick architecture, vast maritime trade routes, and planned hydraulic networks flourishing in South Asia and the Fertile Crescent.
+        <div class="timeline-node">
+          <div class="node-marker"></div>
+          <div class="node-content glass-panel">
+            <span class="node-date">c. 3300 – 1900 BCE</span>
+            <h4 class="node-title">Harappan & Fertile Crescent Apex</h4>
+            <p class="node-text">
+              Pioneering of hydraulic sanitation networks, standardized weights, trade networks linking Sumer and the Indus River basin.
             </p>
           </div>
         </div>
 
-        <!-- Event 3 -->
-        <div class="timeline-item">
-          <div class="timeline-marker"></div>
-          <div class="timeline-box">
-            <span class="t-badge">c. 2600 – 2400 BCE</span>
-            <h4 class="t-title">Megalithic Pyramid Engineering Epoch</h4>
-            <p class="t-desc">
-              Erection of the Giza Plateau monuments displaying millimeter precision, cardinal orientation, and acoustic granite resonating chambers.
+        <div class="timeline-node">
+          <div class="node-marker"></div>
+          <div class="node-content glass-panel">
+            <span class="node-date">c. 2600 – 2400 BCE</span>
+            <h4 class="node-title">The Giza Megalithic Epoch</h4>
+            <p class="node-text">
+              Construct of the Great Pyramid complex displaying mathematical encapsulation of Earth's dimensions and non-combustion machining traces.
             </p>
           </div>
         </div>
 
-        <!-- Event 4 -->
-        <div class="timeline-item">
-          <div class="timeline-marker"></div>
-          <div class="timeline-box">
-            <span class="t-badge">c. 3102 BCE – Ongoing</span>
-            <h4 class="t-title">Kali Yuga Traditional Chronology</h4>
-            <p class="t-desc">
-              Classical Indic chronology marking the shift toward fractured consciousness, rapid cultural drift, and fragmented surviving science.
+        <div class="timeline-node">
+          <div class="node-marker"></div>
+          <div class="node-content glass-panel">
+            <span class="node-date">c. 3102 BCE – Present</span>
+            <h4 class="node-title">Traditional Kali Yuga Horizon</h4>
+            <p class="node-text">
+              Vedic chronology marking the transition of human consciousness into fractured attention, material density, and loss of ancestral sacred sciences.
             </p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Section 5: Unsolved Mysteries -->
+    <!-- Mysteries / Anomalous Section -->
     <section id="mysteries" class="section-container">
       <div class="section-header">
-        <span class="sub-badge">Anomalous Data</span>
-        <h2 class="section-title">Mysteries Waiting for Answers</h2>
-        <p class="section-desc">Distinguishing between physical evidence, scholarly theories, and unsolved questions.</p>
+        <span class="sub-badge">Open Research Inquiries</span>
+        <h2 class="section-title">Mysteries Waiting For Answers</h2>
+        <p class="section-desc">Distinguishing between physical evidence, scholarly theories, and speculative questions.</p>
       </div>
 
       <div class="mystery-grid">
-        <div class="mystery-card">
-          <span class="evidence-tag tag-theory">Acoustic Engineering</span>
-          <h3>Sacred Resonance vs Coincidence</h3>
-          <p>
-            Subterranean chambers and hypogeums repeatedly demonstrate resonant frequencies around 110–120 Hz. Were these engineered for cognitive focus or incidental acoustic properties?
+        <div class="mystery-card glass-panel">
+          <div class="badge-row">
+            <span class="evidence-pill pill-green">Physical Artifact</span>
+            <span class="evidence-pill pill-gold">Machining Traces</span>
+          </div>
+          <h3 class="mystery-heading">Extreme Hard-Stone Extraction</h3>
+          <p class="mystery-body">
+            Basalt, diorite, and rose granite carved with uniform cylindrical core drill marks with high feed rates that puzzle primitive copper chisel models.
           </p>
         </div>
 
-        <div class="mystery-card">
-          <span class="evidence-tag tag-evidence">Physical Precision</span>
-          <h3>Extreme Megalithic Extraction & Transport</h3>
-          <p>
-            Multi-hundred-ton diorite and granite blocks quarry-cut with tight margins and moved across irregular terrain without modern combustion engines.
+        <div class="mystery-card glass-panel">
+          <div class="badge-row">
+            <span class="evidence-pill pill-amber">Scholarly Theory</span>
+            <span class="evidence-pill pill-gold">Cognitive Architecture</span>
+          </div>
+          <h3 class="mystery-heading">Acoustic Neural Tuning</h3>
+          <p class="mystery-body">
+            Were monumental temples purely ceremonial, or did the physical geometry serve as cognitive engines concentrating acoustic resonance and solar energy?
           </p>
         </div>
 
-        <div class="mystery-card">
-          <span class="evidence-tag tag-unresolved">Global Mythology</span>
-          <h3>Synchronous Flood & Reset Traditions</h3>
-          <p>
-            Over 200 distinct world cultures document sudden civilizational resets, culture-bringers preserving math, and architectural reconstruction after deluge events.
+        <div class="mystery-card glass-panel">
+          <div class="badge-row">
+            <span class="evidence-pill pill-purple">Mythological Memory</span>
+            <span class="evidence-pill pill-gold">Universal Narrative</span>
+          </div>
+          <h3 class="mystery-heading">Global Deluge Survivors</h3>
+          <p class="mystery-body">
+            Over 200 ancient traditions worldwide describe "sky teachers" and survivors arriving after catastrophic water resets to transmit math, calendars, and architecture.
           </p>
         </div>
       </div>
     </section>
   </main>
+
+  <!-- Modal Component for Detailed Archives -->
+  <div id="archive-modal" class="modal-backdrop">
+    <div class="modal-content glass-panel">
+      <button class="modal-close-btn" onclick="closeArchiveModal()">&times;</button>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <p class="footer-brand">CHRONOS<span>ARCHIVE</span> &bull; 2026</p>
+      <p class="footer-sub">Dedicated to preserving forgotten archaeological wisdom, ancient sciences, and cyclical history.</p>
+    </div>
+  </footer>
 
   <script src="script.js"></script>
 </body>
