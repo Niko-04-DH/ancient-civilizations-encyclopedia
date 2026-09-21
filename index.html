@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CHRONOS ARCHIVE // Encyclopedia of Ancient Civilizations & Lost Knowledge</title>
   
-  <!-- Typography: Cinzel for monumental titles, Plus Jakarta Sans for reading, JetBrains Mono for metrics -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;900&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -14,20 +13,18 @@
 </head>
 <body class="obsidian-theme">
 
-  <!-- Ambient Glow & Dust Canvas -->
   <div class="ambient-glow glow-gold"></div>
   <div class="ambient-glow glow-amber"></div>
   <canvas id="particle-canvas"></canvas>
 
-  <!-- Sticky Archival Navbar -->
   <header class="navbar">
     <div class="nav-container">
       <a href="#hero" class="brand-logo">
         <span class="logo-glyph">⟁</span> CHRONOS<span class="gold-accent">ARCHIVE</span>
       </a>
 
-      <nav class="nav-links" id="navLinks">
-        <a href="#hero" class="nav-item active">Overview</a>
+      <nav class="nav-links">
+        <a href="#hero" class="nav-item">Overview</a>
         <a href="#civilizations" class="nav-item">Civilizations</a>
         <a href="#knowledge" class="nav-item">Lost Sciences</a>
         <a href="#discoveries" class="nav-item">Discoveries</a>
@@ -36,7 +33,7 @@
       </nav>
 
       <div class="nav-actions">
-        <button class="search-btn" id="searchOpenBtn" aria-label="Open Archive Search">
+        <button class="search-btn" onclick="openSearchModal()" aria-label="Open Archive Search">
           <span class="search-icon">🔍</span>
           <span class="search-text">Search Records...</span>
           <kbd class="search-kbd">⌘K</kbd>
@@ -50,7 +47,7 @@
   </header>
 
   <main>
-    <!-- Hero Section -->
+    <!-- Hero -->
     <section id="hero" class="hero-section">
       <div class="hero-bg-overlay"></div>
       <div class="hero-content">
@@ -83,7 +80,7 @@
       </div>
     </section>
 
-    <!-- Civilization Explorer -->
+    <!-- Civilizations -->
     <section id="civilizations" class="section-container">
       <div class="section-header">
         <span class="sub-badge">Fascicle Index</span>
@@ -91,12 +88,82 @@
         <p class="section-desc">Comprehensive archaeological surveys covering urbanism, mathematics, engineering, and astronomy.</p>
       </div>
 
-      <div class="civ-grid" id="civilizationsGrid">
-        <!-- Rendered dynamically from script.js -->
+      <div class="civ-grid">
+        <!-- Egypt -->
+        <article class="civ-card glass-panel" onclick="openArchiveReader('civilizations', 'egypt')">
+          <div class="card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?auto=format&fit=crop&w=800&q=80" alt="Ancient Egypt" class="card-img">
+            <div class="card-img-overlay"></div>
+            <span class="card-period-tag">c. 3100 – 30 BCE</span>
+          </div>
+          <div class="card-body">
+            <span class="card-region">Nile Valley</span>
+            <h3 class="civ-title">Ancient Egypt</h3>
+            <p class="civ-desc">Precision megalithic masonry, geodetic True-North cardinal alignment, and internal granite chambers tuned to resonant frequencies.</p>
+            <div class="card-footer">
+              <span class="badge-evidence documented">documented</span>
+              <span class="card-open-prompt">ACCESS ARCHIVE &rarr;</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Göbekli -->
+        <article class="civ-card glass-panel" onclick="openArchiveReader('civilizations', 'gobekli')">
+          <div class="card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1599833975787-5c143f373c30?auto=format&fit=crop&w=800&q=80" alt="Göbekli Tepe" class="card-img">
+            <div class="card-img-overlay"></div>
+            <span class="card-period-tag">c. 9600 – 8000 BCE</span>
+          </div>
+          <div class="card-body">
+            <span class="card-region">Upper Mesopotamia (Anatolia)</span>
+            <h3 class="civ-title">Göbekli Tepe Horizon</h3>
+            <p class="civ-desc">Predates domesticated agriculture. Monumental monolithic T-pillars erected at the Younger Dryas boundary and intentionally backfilled.</p>
+            <div class="card-footer">
+              <span class="badge-evidence documented">documented</span>
+              <span class="card-open-prompt">ACCESS ARCHIVE &rarr;</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Indus Valley -->
+        <article class="civ-card glass-panel" onclick="openArchiveReader('civilizations', 'indus')">
+          <div class="card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1608958435020-e8a7109ba809?auto=format&fit=crop&w=800&q=80" alt="Indus Valley" class="card-img">
+            <div class="card-img-overlay"></div>
+            <span class="card-period-tag">c. 3300 – 1300 BCE</span>
+          </div>
+          <div class="card-body">
+            <span class="card-region">South Asia (Indus Basin)</span>
+            <h3 class="civ-title">Indus Valley (Harappan)</h3>
+            <p class="civ-desc">Strict standardized baked brick ratios (4:2:1), underground covered municipal sanitation, and tidal dock maritime locks at Lothal.</p>
+            <div class="card-footer">
+              <span class="badge-evidence documented">documented</span>
+              <span class="card-open-prompt">ACCESS ARCHIVE &rarr;</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Angkor -->
+        <article class="civ-card glass-panel" onclick="openArchiveReader('civilizations', 'angkor')">
+          <div class="card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1569154941061-e231b4725ef1?auto=format&fit=crop&w=1200&q=80" alt="Angkor Wat" class="card-img">
+            <div class="card-img-overlay"></div>
+            <span class="card-period-tag">c. 802 – 1431 CE</span>
+          </div>
+          <div class="card-body">
+            <span class="card-region">Southeast Asia (Cambodia)</span>
+            <h3 class="civ-title">Angkor Grid Complex</h3>
+            <p class="civ-desc">LIDAR airborne surveys revealed vast concentric hydraulic grids, axial solar alignments, and circuit-like water regulation basins.</p>
+            <div class="card-footer">
+              <span class="badge-evidence documented">documented</span>
+              <span class="card-open-prompt">ACCESS ARCHIVE &rarr;</span>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
-    <!-- Ancient Knowledge Modules -->
+    <!-- Ancient Knowledge -->
     <section id="knowledge" class="section-container">
       <div class="section-header">
         <span class="sub-badge">Recovered Sciences</span>
@@ -104,12 +171,58 @@
         <p class="section-desc">Deep comparative investigations into mathematical ratios, acoustic resonance, geodetic survey, and cyclical cosmology.</p>
       </div>
 
-      <div class="knowledge-grid" id="knowledgeGrid">
-        <!-- Rendered dynamically from script.js -->
+      <div class="knowledge-grid">
+        <article class="knowledge-card glass-panel" onclick="openArchiveReader('knowledge', 'geometry')">
+          <div>
+            <div class="k-icon-wrap">📐</div>
+            <h3 class="k-title">Sacred Geometry, Pi & Phi</h3>
+            <p class="k-desc">Mathematical analysis of spherical coordinates, circle squaring, and golden ratio proportions across Giza, Babylon, and Greece.</p>
+          </div>
+          <div class="k-meta">
+            <span class="badge-evidence debated">debated</span>
+            <span class="card-open-prompt">READ MONOGRAPH &rarr;</span>
+          </div>
+        </article>
+
+        <article class="knowledge-card glass-panel" onclick="openArchiveReader('knowledge', 'acoustics')">
+          <div>
+            <div class="k-icon-wrap">🔊</div>
+            <h3 class="k-title">Archaeological Acoustics & Infrasound</h3>
+            <p class="k-desc">Empirical studies of resonant chambers, 110–120 Hz hypogeum acoustics, and psychological impacts of sonic standing waves.</p>
+          </div>
+          <div class="k-meta">
+            <span class="badge-evidence hypothesis">hypothesis</span>
+            <span class="card-open-prompt">READ MONOGRAPH &rarr;</span>
+          </div>
+        </article>
+
+        <article class="knowledge-card glass-panel" onclick="openArchiveReader('knowledge', 'alignment')">
+          <div>
+            <div class="k-icon-wrap">🧭</div>
+            <h3 class="k-title">Geodetic & Solar Alignments</h3>
+            <p class="k-desc">True-North orientation surveying methods, solstitial shadow projections, and stellar transit observation before optical telescopes.</p>
+          </div>
+          <div class="k-meta">
+            <span class="badge-evidence documented">documented</span>
+            <span class="card-open-prompt">READ MONOGRAPH &rarr;</span>
+          </div>
+        </article>
+
+        <article class="knowledge-card glass-panel" onclick="openArchiveReader('knowledge', 'younger-dryas')">
+          <div>
+            <div class="k-icon-wrap">🌊</div>
+            <h3 class="k-title">Younger Dryas & Global Deluge Traditions</h3>
+            <p class="k-desc">Climatological meltwater pulses (12.8k–11.6k YA) evaluated alongside universal flood narratives and Vedic Yuga transition models.</p>
+          </div>
+          <div class="k-meta">
+            <span class="badge-evidence debated">debated</span>
+            <span class="card-open-prompt">READ MONOGRAPH &rarr;</span>
+          </div>
+        </article>
       </div>
     </section>
 
-    <!-- Featured Discoveries -->
+    <!-- Discoveries -->
     <section id="discoveries" class="section-container">
       <div class="section-header">
         <span class="sub-badge">Field Reports</span>
@@ -117,12 +230,20 @@
         <p class="section-desc">Monographic analyses of pivotal artifacts, mechanical calculating computers, and precision stone-cutting horizons.</p>
       </div>
 
-      <div class="discoveries-grid" id="discoveriesGrid">
-        <!-- Rendered dynamically from script.js -->
+      <div class="discoveries-grid">
+        <article class="discovery-card glass-panel" onclick="openArchiveReader('discoveries', 'antikythera')">
+          <span class="discovery-loc">Off Antikythera, Greece &bull; c. 200 – 60 BCE</span>
+          <h3 class="discovery-title">The Antikythera Mechanism</h3>
+          <p class="discovery-excerpt">The world's earliest known analogue mechanical computer, predicting eclipses, lunar anomalies, and planetary cycles using differential gear trains.</p>
+          <div class="card-footer">
+            <span class="badge-evidence documented">documented</span>
+            <span class="card-open-prompt">INSPECT REPORT &rarr;</span>
+          </div>
+        </article>
       </div>
     </section>
 
-    <!-- Interactive Chronology & Cataclysms -->
+    <!-- Timeline -->
     <section id="timeline" class="section-container">
       <div class="section-header">
         <span class="sub-badge">Temporal Stratigraphy</span>
@@ -130,12 +251,50 @@
         <p class="section-desc">Correlating archaeological epochs with known paleoclimatic boundary shifts (Younger Dryas) and cyclical chronologies.</p>
       </div>
 
-      <div class="timeline-tree" id="timelineTree">
-        <!-- Rendered dynamically from script.js -->
+      <div class="timeline-tree">
+        <div class="timeline-node" onclick="openArchiveByRef('gobekli')">
+          <div class="node-marker"></div>
+          <div class="node-content glass-panel">
+            <span class="node-date">c. 10,800 – 9,600 BCE</span>
+            <h4 class="node-title">Younger Dryas Boundary & Göbekli Horizon</h4>
+            <p class="node-text">Abrupt paleoclimatic oscillation, catastrophic meltwater release, and intentional burial of monolithic stone sanctuaries across Upper Mesopotamia.</p>
+            <span class="card-open-prompt">VIEW CHRONOLOGICAL CONTEXT &rarr;</span>
+          </div>
+        </div>
+
+        <div class="timeline-node" onclick="openArchiveByRef('indus')">
+          <div class="node-marker"></div>
+          <div class="node-content glass-panel">
+            <span class="node-date">c. 3300 – 1900 BCE</span>
+            <h4 class="node-title">Indus & Sumerian Urban Apex</h4>
+            <p class="node-text">Orthogonal grid urbanism, covered municipal sanitation, and maritime trade routes connecting Dilmun, Magan, and Meluhha.</p>
+            <span class="card-open-prompt">VIEW CHRONOLOGICAL CONTEXT &rarr;</span>
+          </div>
+        </div>
+
+        <div class="timeline-node" onclick="openArchiveByRef('egypt')">
+          <div class="node-marker"></div>
+          <div class="node-content glass-panel">
+            <span class="node-date">c. 2600 – 2400 BCE</span>
+            <h4 class="node-title">Old Kingdom Megalithic Pyramid Construction</h4>
+            <p class="node-text">Erection of the Giza monuments displaying geodetic True North alignment, deep core drilling, and internal granite Helmholtz acoustics.</p>
+            <span class="card-open-prompt">VIEW CHRONOLOGICAL CONTEXT &rarr;</span>
+          </div>
+        </div>
+
+        <div class="timeline-node" onclick="openArchiveByRef('younger-dryas')">
+          <div class="node-marker"></div>
+          <div class="node-content glass-panel">
+            <span class="node-date">c. 3102 BCE – Present</span>
+            <h4 class="node-title">Traditional Kali Yuga Chronology</h4>
+            <p class="node-text">Vedic civilizational model documenting the transition toward material density, social fragmentation, and loss of integrated ancient sciences.</p>
+            <span class="card-open-prompt">VIEW CHRONOLOGICAL CONTEXT &rarr;</span>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- Open Research / Anomalies -->
+    <!-- Mysteries -->
     <section id="mysteries" class="section-container">
       <div class="section-header">
         <span class="sub-badge">Anomalous Data</span>
@@ -143,18 +302,32 @@
         <p class="section-desc">Intellectually responsible investigations into hard-stone core drilling, multi-hundred ton logistics, and universal deluge traditions.</p>
       </div>
 
-      <div class="mystery-grid" id="mysteryGrid">
-        <!-- Rendered dynamically from script.js -->
+      <div class="mystery-grid">
+        <article class="mystery-card glass-panel" onclick="openArchiveReader('mysteries', 'hard-stone-drilling')">
+          <span class="badge-evidence debated">debated</span>
+          <h3 class="mystery-heading">Precision Hard-Stone Extraction & Core Drilling</h3>
+          <p class="mystery-body">Examining cylindrical core drill holes in diorite, basalt, and rose granite with micro-groove feed spirals.</p>
+          <div class="card-footer">
+            <span class="card-open-prompt">EXAMINE INQUIRY &rarr;</span>
+          </div>
+        </article>
+
+        <article class="mystery-card glass-panel" onclick="openArchiveReader('mysteries', 'megalithic-logistics')">
+          <span class="badge-evidence documented">documented</span>
+          <h3 class="mystery-heading">Multi-Hundred Ton Monolithic Logistics</h3>
+          <p class="mystery-body">Moving the Trilithon stones at Baalbek (800+ tons) and the Ramesseum Colossus across natural terrain without combustion engines.</p>
+          <div class="card-footer">
+            <span class="card-open-prompt">EXAMINE INQUIRY &rarr;</span>
+          </div>
+        </article>
       </div>
     </section>
   </main>
 
-  <!-- Full-Screen Deep Archaeological Archive Reader Modal -->
+  <!-- Reader Modal -->
   <div id="archiveReaderModal" class="archive-reader-modal" aria-hidden="true">
     <div class="reader-backdrop" onclick="closeArchiveReader()"></div>
     <div class="reader-container glass-panel">
-      
-      <!-- Modal Navigation Header -->
       <div class="reader-header">
         <div class="reader-meta">
           <span class="reader-category" id="readerCategory">ARCHIVE RECORD</span>
@@ -164,35 +337,25 @@
         <button class="reader-close-btn" onclick="closeArchiveReader()" aria-label="Close Reader">&times;</button>
       </div>
 
-      <!-- Tabbed Navigation within Archive -->
-      <div class="reader-tabs-bar" id="readerTabsBar">
-        <!-- Dynamically generated tabs depending on content type -->
-      </div>
+      <div class="reader-tabs-bar" id="readerTabsBar"></div>
+      <div class="reader-body" id="readerBody"></div>
 
-      <!-- Scrollable Main Reading Pane -->
-      <div class="reader-body" id="readerBody">
-        <!-- Injected dynamically based on topic -->
-      </div>
-
-      <!-- Footer with Related Archives & Sources -->
       <div class="reader-footer">
         <div class="related-section">
           <span class="related-title">CONTINUE ARCHIVAL EXPLORATION:</span>
-          <div class="related-chips" id="readerRelatedChips">
-            <!-- Dynamic Related Chips -->
-          </div>
+          <div class="related-chips" id="readerRelatedChips"></div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Global Content Search Palette -->
+  <!-- Search Modal -->
   <div id="searchModal" class="search-modal" aria-hidden="true">
     <div class="search-backdrop" onclick="closeSearchModal()"></div>
     <div class="search-box glass-panel">
       <div class="search-input-wrap">
         <span class="search-icon-lg">🔍</span>
-        <input type="text" id="archiveSearchInput" placeholder="Search civilizations, technologies, discoveries, π/φ, acoustics..." autocomplete="off">
+        <input type="text" id="archiveSearchInput" placeholder="Search civilizations, technologies, discoveries, Pi, acoustics..." autocomplete="off">
         <button class="search-esc" onclick="closeSearchModal()">ESC</button>
       </div>
       <div class="search-results" id="searchResults">
@@ -201,7 +364,6 @@
     </div>
   </div>
 
-  <!-- Archival Footer -->
   <footer class="site-footer">
     <div class="footer-container">
       <div class="footer-brand-wrap">
