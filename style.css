@@ -151,3 +151,138 @@ body {
   color: var(--text-primary);
   background: rgba(255, 255, 255, 0.03);
 }
+
+/* Shared Section Styling */
+.section-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 6rem 1.5rem;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.sub-badge {
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent-gold);
+  font-weight: 600;
+}
+
+.section-title {
+  font-family: var(--font-serif);
+  font-size: 2.2rem;
+  margin: 0.5rem 0;
+  color: var(--text-primary);
+}
+
+.section-desc {
+  color: var(--text-muted);
+  font-size: 1rem;
+}
+
+/* Grids */
+.civ-grid, .knowledge-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Civilization Cards */
+.civ-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-glass);
+  border-radius: 8px;
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.civ-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(212, 175, 55, 0.4);
+}
+
+.highlight-card {
+  border-color: rgba(230, 154, 53, 0.35);
+}
+
+.card-meta {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.meta-tag {
+  font-size: 0.72rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  color: var(--accent-amber);
+}
+
+.civ-name {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  margin-bottom: 0.75rem;
+}
+
+.civ-text {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+.civ-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.focus-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.card-arrow {
+  color: var(--accent-gold);
+}
+
+/* Knowledge Cards */
+.knowledge-card {
+  background: rgba(18, 22, 30, 0.5);
+  border: 1px solid var(--border-glass);
+  border-radius: 8px;
+  padding: 1.75rem;
+  transition: border-color 0.25s ease;
+}
+
+.knowledge-card:hover {
+  border-color: rgba(212, 175, 55, 0.35);
+}
+
+.k-icon {
+  font-size: 1.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.knowledge-card h4 {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.knowledge-card p {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
