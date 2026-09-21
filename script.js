@@ -116,7 +116,7 @@ const ARCHIVE_DATABASE = {
       period: "c. 802 – 1431 CE",
       region: "Southeast Asia (Cambodia)",
       evidence: "documented",
-      img: "https://images.unsplash.com/photo-1569154941061-e231b4725ef1?auto=format&fit=crop&w=1200&q=80",
+      img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80",
       summary: "LIDAR airborne surveys revealed vast concentric hydraulic grids, axial solar alignments, and circuit-like water regulation basins.",
       tabs: {
         "Overview": `
@@ -374,10 +374,10 @@ function initParticleCanvas() {
   loop();
 }
 
-// 3. Render Functions for Grids
+// 3. Render Functions for Grids (Only renders if container is empty)
 function renderCivilizations() {
   const grid = document.getElementById('civilizationsGrid');
-  if (!grid) return;
+  if (!grid || grid.children.length > 0) return;
 
   grid.innerHTML = ARCHIVE_DATABASE.civilizations.map(c => `
     <article class="civ-card glass-panel" onclick="openArchiveReader('civilizations', '${c.id}')">
@@ -401,7 +401,7 @@ function renderCivilizations() {
 
 function renderKnowledge() {
   const grid = document.getElementById('knowledgeGrid');
-  if (!grid) return;
+  if (!grid || grid.children.length > 0) return;
 
   grid.innerHTML = ARCHIVE_DATABASE.knowledge.map(k => `
     <article class="knowledge-card glass-panel" onclick="openArchiveReader('knowledge', '${k.id}')">
@@ -420,7 +420,7 @@ function renderKnowledge() {
 
 function renderDiscoveries() {
   const grid = document.getElementById('discoveriesGrid');
-  if (!grid) return;
+  if (!grid || grid.children.length > 0) return;
 
   grid.innerHTML = ARCHIVE_DATABASE.discoveries.map(d => `
     <article class="discovery-card glass-panel" onclick="openArchiveReader('discoveries', '${d.id}')">
@@ -437,7 +437,7 @@ function renderDiscoveries() {
 
 function renderTimeline() {
   const container = document.getElementById('timelineTree');
-  if (!container) return;
+  if (!container || container.children.length > 0) return;
 
   container.innerHTML = ARCHIVE_DATABASE.timeline.map(t => `
     <div class="timeline-node" onclick="openArchiveByRef('${t.archiveRef}')">
@@ -454,7 +454,7 @@ function renderTimeline() {
 
 function renderMysteries() {
   const grid = document.getElementById('mysteryGrid');
-  if (!grid) return;
+  if (!grid || grid.children.length > 0) return;
 
   grid.innerHTML = ARCHIVE_DATABASE.mysteries.map(m => `
     <article class="mystery-card glass-panel" onclick="openArchiveReader('mysteries', '${m.id}')">
@@ -565,9 +565,11 @@ function initSearch() {
   const modal = document.getElementById('searchModal');
   const input = document.getElementById('archiveSearchInput');
   const results = document.getElementById('searchResults');
-  if (!openBtn || !modal || !input) return;
+  if (!modal || !input) return;
 
-  openBtn.addEventListener('click', openSearchModal);
+  if (openBtn) {
+    openBtn.addEventListener('click', openSearchModal);
+  }
 
   window.addEventListener('keydown', e => {
     if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
