@@ -116,7 +116,7 @@ const ARCHIVE_DATABASE = {
       period: "c. 802 – 1431 CE",
       region: "Southeast Asia (Cambodia)",
       evidence: "documented",
-      img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80",
+      img: "angkor.jpg",
       summary: "LIDAR airborne surveys revealed vast concentric hydraulic grids, axial solar alignments, and circuit-like water regulation basins.",
       tabs: {
         "Overview": `
