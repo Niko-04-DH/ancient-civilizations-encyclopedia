@@ -118,8 +118,8 @@ const ARCHIVE_DATABASE = {
       period: "c. 802 – 1431 CE",
       region: "Southeast Asia (Cambodia)",
       evidence: "documented",
-      img: "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=800&q=80",
-      summary: "LIDAR airborne surveys revealed vast concentric hydraulic grids, axial solar alignments, and circuit-like water regulation basins.",
+      img: "https://images.unsplash.com/photo-1569154941061-e231b4725ef1?auto=format&fit=crop&w=1200&q=80",
+      summary: "LIDAR airborne surveys revealed vast concentric hydraulic grids, axial solar alignments, and circuit-like water regulation basins.", and circuit-like water regulation basins.",
       tabs: {
         "Overview": `
           <h4 class="reader-heading">The Hydraulic Megacity</h4>
